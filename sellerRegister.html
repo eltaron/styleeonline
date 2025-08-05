@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Stylee Online - الرئيسية</title>
+
+        <!-- Google Fonts (Tajawal) -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Bootstrap 5.3.2 CSS (RTL) -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css"
+            integrity="sha384-nU14brUcp6StFntEOOEBvcJm4huWjB0OcIeQ3fltAfSmuZFrkAif0T+UtNGlKKQv"
+            crossorigin="anonymous"
+        />
+
+        <!-- Font Awesome 6.4.2 CSS -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+            integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+
+        <link rel="stylesheet" href="main.css" />
+        <link rel="stylesheet" href="index.css" />
+        <style>
+            /* ======================= SELLER REGISTRATION PAGE ======================= */
+            .seller-registration-page {
+                background-color: var(--light-gray);
+            }
+            .registration-form-container {
+                background-color: white;
+                color: var(--text-color);
+                padding: 2rem 2.5rem;
+                border-radius: 15px;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            }
+
+            /* Progress Stepper */
+            .progress-stepper {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                margin-bottom: 2.5rem;
+                position: relative;
+            }
+            .progress-stepper::before {
+                content: "";
+                position: absolute;
+                top: 20px;
+                right: 5%;
+                left: 5%;
+                height: 2px;
+                background-color: #e0e0e0;
+                z-index: 1;
+            }
+            .step-item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                width: 100px;
+                z-index: 2;
+                background-color: white;
+            }
+            .step-circle {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background-color: #f1f1f1;
+                color: #999;
+                border: 2px solid #e0e0e0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-weight: 700;
+                transition: all 0.4s ease;
+                margin-bottom: 0.5rem;
+            }
+            .step-title {
+                font-size: 0.9rem;
+                color: #777;
+                font-weight: 500;
+            }
+            .step-item.active .step-circle {
+                background-color: var(--primary-color);
+                color: white;
+                border-color: var(--primary-color);
+            }
+            .step-item.active .step-title {
+                color: var(--primary-color);
+                font-weight: 700;
+            }
+            .step-item.completed .step-circle {
+                background-color: #c37aaa; /* Lighter primary color */
+                color: white;
+                border-color: #c37aaa;
+            }
+
+            /* Form Steps */
+            .form-step {
+                display: none;
+            }
+            .form-step.active {
+                display: block;
+                animation: fadeIn 0.5s ease-in-out;
+            }
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            .step-form-title {
+                color: var(--text-color);
+                font-weight: 700;
+                margin-bottom: 0.5rem;
+            }
+
+            /* Password Validation */
+            #password-validation ul li {
+                color: #e74c3c; /* Red for invalid by default */
+                font-size: 0.9rem;
+                transition: color 0.3s ease;
+            }
+            #password-validation ul li i {
+                margin-inline-end: 8px;
+            }
+            #password-validation ul li.valid {
+                color: #2ecc71; /* Green for valid */
+            }
+
+            /* File Upload Area */
+            .file-upload-area label {
+                border: 2px dashed #ddd;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+            .file-upload-area label:hover {
+                border-color: var(--primary-color);
+                background-color: #f8f2f5;
+            }
+
+            .form-control:focus,
+            .form-select:focus {
+                border-color: var(--primary-color);
+                box-shadow: 0 0 0 0.25rem rgba(136, 34, 102, 0.25);
+            }
+        </style>
+    </head>
+    <body>
+        <!-- ======================= HEADER ======================= -->
+        <header>
+            <!-- Top Bar -->
+            <div class="top-bar d-none d-md-block">
+                <div
+                    class="container d-flex justify-content-center align-items-center gap-4"
+                >
+                    <span
+                        >خصم %21 على أول طلب لك باستخدام كود
+                        <span class="fw-bold">NEW</span> -
+                        <a href="#">اشترِ خصمك الآن</a></span
+                    >
+                    <button class="btn btn-sm btn-go">اذهب</button>
+                </div>
+            </div>
+            <!-- Main Header & Search -->
+            <div class="main-header py-2">
+                <div class="container">
+                    <!-- Top Row in Header -->
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <ul
+                                class="nav header-actions justify-content-center justify-content-lg-start"
+                            >
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link"
+                                        ><i
+                                            class="fa-solid fa-location-dot"
+                                        ></i>
+                                        أين ألإدارايات</a
+                                    >
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link"
+                                        ><i class="fa-solid fa-store"></i> إبدأ
+                                        البيع معنا</a
+                                    >
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6 d-none d-lg-block">
+                            <ul class="nav header-actions">
+                                <li class="nav-item dropdown lang-container">
+                                    <a
+                                        class="nav-link dropdown-toggle lang"
+                                        href="#"
+                                        role="button"
+                                        data-bs-toggle="dropdown"
+                                        aria-expanded="false"
+                                    >
+                                        <i class="fa-solid fa-globe"></i> Eng
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a class="dropdown-item" href="#"
+                                                >العربية</a
+                                            >
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#"
+                                                >English</a
+                                            >
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Bottom Row in Header -->
+                    <div class="row align-items-center mt-2">
+                        <div class="col-md-3 col-2">
+                            <a href="#" class="header-logo">
+                                <img
+                                    src="logo.png"
+                                    alt="Stylee Logo"
+                                    height="40"
+                                />
+                            </a>
+                        </div>
+                        <div class="col-lg-6 col-md-8 col-10">
+                            <div class="search-bar-wrapper position-relative">
+                                <form class="d-flex search-bar">
+                                    <input
+                                        class="form-control"
+                                        type="search"
+                                        placeholder="ابحث..."
+                                        aria-label="Search"
+                                    />
+                                    <button
+                                        class="btn btn-search d-flex align-items-center justify-content-center"
+                                        type="submit"
+                                    >
+                                        <i
+                                            class="fa-solid fa-magnifying-glass"
+                                        ></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-4">
+                            <ul
+                                class="nav user-actions justify-content-center mt-4 justify-content-lg-end"
+                            >
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link"
+                                        ><i class="fa-solid fa-rotate fs-5"></i
+                                    ></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link"
+                                        ><i class="fa-solid fa-heart fs-5"></i
+                                    ></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link"
+                                        ><i class="fa-solid fa-user fs-5"></i
+                                    ></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a
+                                        href="#"
+                                        class="nav-link position-relative"
+                                    >
+                                        <i
+                                            class="fa-solid fa-bag-shopping fs-5"
+                                        ></i>
+                                        <span
+                                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill"
+                                            >3</span
+                                        >
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- ======================= BODY CONTENT (Placeholder) ======================= -->
+        <main class="seller-registration-page py-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 col-md-10">
+                        <div class="registration-form-container">
+                            <!-- Progress Bar -->
+                            <div class="progress-stepper">
+                                <div class="step-item active">
+                                    <div class="step-circle">1</div>
+                                    <div class="step-title">معلومات الحساب</div>
+                                </div>
+                                <div class="step-item">
+                                    <div class="step-circle">2</div>
+                                    <div class="step-title">تفاصيل المتجر</div>
+                                </div>
+                                <div class="step-item">
+                                    <div class="step-circle">3</div>
+                                    <div class="step-title">
+                                        التحقق والموافقة
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Registration Form -->
+                            <form id="sellerRegisterForm" novalidate>
+                                <!-- Step 1: Account Info -->
+                                <div class="form-step active">
+                                    <h3 class="step-form-title">
+                                        ابدأ رحلتك كتاجر معنا
+                                    </h3>
+                                    <p class="text-muted mb-4">
+                                        أدخل معلومات حسابك الأساسية للبدء.
+                                    </p>
+
+                                    <div class="mb-3">
+                                        <label
+                                            for="accountType"
+                                            class="form-label"
+                                            >نوع الحساب</label
+                                        >
+                                        <select
+                                            class="form-select"
+                                            id="accountType"
+                                        >
+                                            <option value="individual">
+                                                فرد (بدون سجل تجاري)
+                                            </option>
+                                            <option value="company" selected>
+                                                شركة (بسجل تجاري)
+                                            </option>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label"
+                                            >البريد الإلكتروني</label
+                                        >
+                                        <div class="input-group">
+                                            <span class="input-group-text"
+                                                ><i
+                                                    class="fa-solid fa-envelope"
+                                                ></i
+                                            ></span>
+                                            <input
+                                                type="email"
+                                                class="form-control"
+                                                id="email"
+                                                placeholder="example@company.com"
+                                                required
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="password" class="form-label"
+                                            >كلمة المرور</label
+                                        >
+                                        <div class="input-group">
+                                            <span class="input-group-text"
+                                                ><i class="fa-solid fa-lock"></i
+                                            ></span>
+                                            <input
+                                                type="password"
+                                                class="form-control"
+                                                id="password"
+                                                required
+                                            />
+                                        </div>
+                                    </div>
+                                    <!-- Password validation checklist -->
+                                    <div id="password-validation" class="mb-4">
+                                        <ul class="list-unstyled">
+                                            <li id="length">
+                                                <i
+                                                    class="fa-solid fa-circle-xmark"
+                                                ></i>
+                                                8 أحرف على الأقل
+                                            </li>
+                                            <li id="uppercase">
+                                                <i
+                                                    class="fa-solid fa-circle-xmark"
+                                                ></i>
+                                                حرف كبير واحد على الأقل
+                                            </li>
+                                            <li id="number">
+                                                <i
+                                                    class="fa-solid fa-circle-xmark"
+                                                ></i>
+                                                رقم واحد على الأقل
+                                            </li>
+                                            <li id="special">
+                                                <i
+                                                    class="fa-solid fa-circle-xmark"
+                                                ></i>
+                                                رمز خاص واحد على الأقل (!@#$)
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="d-flex justify-content-end">
+                                        <button
+                                            type="button"
+                                            class="btn btn-style"
+                                            id="nextBtnStep1"
+                                        >
+                                            التالي
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Step 2: Store Info -->
+                                <div class="form-step">
+                                    <h3 class="step-form-title">
+                                        أخبرنا المزيد عن متجرك
+                                    </h3>
+                                    <p class="text-muted mb-4">
+                                        هذه المعلومات ستظهر لعملائك.
+                                    </p>
+                                    <div class="mb-3">
+                                        <label
+                                            for="storeName"
+                                            class="form-label"
+                                            >اسم المتجر</label
+                                        >
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            id="storeName"
+                                            placeholder="مثال: متجر الأناقة العصرية"
+                                            required
+                                        />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label
+                                            for="storeCategory"
+                                            class="form-label"
+                                            >فئة المتجر الرئيسية</label
+                                        >
+                                        <select
+                                            class="form-select"
+                                            id="storeCategory"
+                                        >
+                                            <option selected disabled>
+                                                اختر الفئة...
+                                            </option>
+                                            <option>ملابس نسائية</option>
+                                            <option>ملابس رجالية</option>
+                                            <option>إكسسوارات</option>
+                                            <option>أحذية وحقائب</option>
+                                            <option>إلكترونيات</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label
+                                            for="storeDescription"
+                                            class="form-label"
+                                            >وصف قصير للمتجر</label
+                                        >
+                                        <textarea
+                                            class="form-control"
+                                            id="storeDescription"
+                                            rows="3"
+                                            placeholder="صف ما يميز منتجاتك ومتجرك..."
+                                        ></textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="country" class="form-label"
+                                            >الدولة</label
+                                        >
+                                        <select
+                                            class="form-select"
+                                            id="country"
+                                        >
+                                            <option>السعودية</option>
+                                            <option>مصر</option>
+                                            <option>الإمارات</option>
+                                        </select>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <button
+                                            type="button"
+                                            class="btn btn-secondary"
+                                            id="prevBtnStep2"
+                                        >
+                                            السابق
+                                        </button>
+                                        <button
+                                            type="button"
+                                            class="btn btn-style"
+                                            id="nextBtnStep2"
+                                        >
+                                            التالي
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Step 3: Verification & Agreement -->
+                                <div class="form-step">
+                                    <h3 class="step-form-title">
+                                        التحقق من الهوية والقانونية
+                                    </h3>
+                                    <p class="text-muted mb-4">
+                                        نحن نأخذ الأمان على محمل الجد. يرجى رفع
+                                        المستندات المطلوبة.
+                                    </p>
+
+                                    <div class="mb-3">
+                                        <label class="form-label"
+                                            >السجل التجاري أو وثيقة العمل
+                                            الحر</label
+                                        >
+                                        <div class="file-upload-area">
+                                            <input
+                                                type="file"
+                                                id="businessLicense"
+                                                class="d-none"
+                                            />
+                                            <label
+                                                for="businessLicense"
+                                                class="d-block text-center p-4"
+                                            >
+                                                <i
+                                                    class="fa-solid fa-cloud-arrow-up fs-2 mb-2"
+                                                ></i
+                                                ><br />
+                                                <span
+                                                    >انقر هنا للرفع أو اسحب
+                                                    الملف وأفلته</span
+                                                >
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label"
+                                            >هوية المالك</label
+                                        >
+                                        <div class="file-upload-area">
+                                            <input
+                                                type="file"
+                                                id="ownerId"
+                                                class="d-none"
+                                            />
+                                            <label
+                                                for="ownerId"
+                                                class="d-block text-center p-4"
+                                            >
+                                                <i
+                                                    class="fa-solid fa-cloud-arrow-up fs-2 mb-2"
+                                                ></i
+                                                ><br />
+                                                <span
+                                                    >انقر هنا للرفع أو اسحب
+                                                    الملف وأفلته</span
+                                                >
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-check mt-4">
+                                        <input
+                                            class="form-check-input"
+                                            type="checkbox"
+                                            value=""
+                                            id="termsCheck"
+                                            required
+                                        />
+                                        <label
+                                            class="form-check-label"
+                                            for="termsCheck"
+                                        >
+                                            أوافق على
+                                            <a href="#">شروط وأحكام البائع</a> و
+                                            <a href="#">سياسة الخصوصية</a>.
+                                        </label>
+                                    </div>
+
+                                    <div
+                                        class="d-flex justify-content-between mt-4"
+                                    >
+                                        <button
+                                            type="button"
+                                            class="btn btn-secondary"
+                                            id="prevBtnStep3"
+                                        >
+                                            السابق
+                                        </button>
+                                        <button
+                                            type="submit"
+                                            class="btn btn-style"
+                                        >
+                                            إنشاء الحساب
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <!-- Confirmation Message -->
+                            <div
+                                id="confirmationMessage"
+                                class="text-center p-5"
+                                style="display: none"
+                            >
+                                <i
+                                    class="fa-solid fa-circle-check fa-4x text-success mb-4"
+                                ></i>
+                                <h2 class="mb-3">تم إرسال طلبك بنجاح!</h2>
+                                <p class="text-muted">
+                                    شكراً لتسجيلك معنا. سيقوم فريقنا بمراجعة
+                                    طلبك وسيتم التواصل معك عبر البريد الإلكتروني
+                                    خلال 3-5 أيام عمل.
+                                </p>
+                                <a href="index.html" class="btn btn-style mt-3"
+                                    >العودة إلى الرئيسية</a
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- ======================= FOOTER ======================= -->
+        <footer>
+            <div class="pre-footer-section">
+                <div class="container">
+                    <div class="pre-footer-card">
+                        <div class="row g-0 align-items-center">
+                            <div
+                                class="col-lg-1 d-none d-lg-flex flex-column align-items-center justify-content-center pre-footer-social gap-4"
+                            >
+                                <a href="#"
+                                    ><i class="fab fa-facebook-f"></i
+                                ></a>
+                                <a href="#"><i class="fab fa-x"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                            <div class="col-lg-8 px-4 py-5 p-md-5">
+                                <h2 class="fw-bold">
+                                    كن على تواصل! واحصل على
+                                    <span> خصم %20</span>
+                                </h2>
+                                <p class="text-muted mt-3">
+                                    لتبقى على اتصال، شارك في قائمتنا البريدية
+                                    وكن على اطلاع على أحدث عروضنا.
+                                </p>
+                                <form class="mt-4">
+                                    <div class="input-group">
+                                        <input
+                                            type="email"
+                                            class="form-control form-control-lg"
+                                            placeholder="أدخل بريدك الإلكتروني"
+                                            aria-label="Recipient's username"
+                                            aria-describedby="button-addon2"
+                                        />
+                                        <button
+                                            class="btn btn-subscribe"
+                                            type="button"
+                                            id="button-addon2"
+                                        >
+                                            اشترك
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-footer">
+                <div class="container">
+                    <div class="row gy-4 align-items-center">
+                        <div class="col-lg-2 col-6">
+                            <img
+                                src="logo.png"
+                                alt="Stylee Logo"
+                                height="100"
+                                class="mb-3"
+                            />
+                        </div>
+                        <div class="col-lg-2 col-6">
+                            <h5 class="footer-title">روابط سريعة</h5>
+                            <ul class="list-unstyled footer-links">
+                                <li class="mb-2"><a href="#">الرئيسية</a></li>
+                                <li class="mb-2">
+                                    <a href="#">كل المنتجات</a>
+                                </li>
+                                <li class="mb-2"><a href="#">كل المتاجر</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2 col-6">
+                            <h5 class="footer-title">الدعم</h5>
+                            <ul class="list-unstyled footer-links">
+                                <li class="mb-2">
+                                    <a href="#">سياسة الخصوصية</a>
+                                </li>
+                                <li class="mb-2">
+                                    <a href="#">سياسة الاسترجاع</a>
+                                </li>
+                                <li class="mb-2">
+                                    <a href="#">الشروط و الأحكام</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-3 col-6">
+                            <h5 class="footer-title">تواصل معنا</h5>
+                            <ul class="list-unstyled footer-links">
+                                <li class="mb-2">
+                                    <a href="mailto:styleeonline@email.com"
+                                        ><i
+                                            class="fa-solid fa-envelope me-2"
+                                        ></i>
+                                        styleeonline@email.com</a
+                                    >
+                                </li>
+                                <li class="mb-5">
+                                    <a href="tel:+123456789"
+                                        ><i class="fa-solid fa-phone me-2"></i>
+                                        +123456789</a
+                                    >
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2 col-6">
+                            <img
+                                src="footer.png"
+                                alt="Happy Kids"
+                                class="girls-img d-none d-lg-block"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sub-footer text-center">
+                <span
+                    >جميع الحقوق محفوظة لـ
+                    <a href="#" class="text-white"
+                        >www.styleeonline.com</a
+                    ></span
+                >
+            </div>
+        </footer>
+        <!-- Bootstrap 5.3.2 JS Bundle -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"
+        ></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // Step navigation elements
+                const formSteps = document.querySelectorAll(".form-step");
+                const progressSteps = document.querySelectorAll(
+                    ".progress-stepper .step-item"
+                );
+                const sellerForm =
+                    document.getElementById("sellerRegisterForm");
+                let currentStep = 0;
+
+                // Password validation elements
+                const passwordInput = document.getElementById("password");
+                const checks = {
+                    length: document.getElementById("length"),
+                    uppercase: document.getElementById("uppercase"),
+                    number: document.getElementById("number"),
+                    special: document.getElementById("special"),
+                };
+
+                function updateFormView() {
+                    // Hide all steps
+                    formSteps.forEach((step) =>
+                        step.classList.remove("active")
+                    );
+                    // Show current step
+                    formSteps[currentStep].classList.add("active");
+
+                    // Update progress bar
+                    progressSteps.forEach((step, index) => {
+                        if (index < currentStep) {
+                            step.classList.add("completed");
+                            step.classList.remove("active");
+                        } else if (index === currentStep) {
+                            step.classList.add("active");
+                            step.classList.remove("completed");
+                        } else {
+                            step.classList.remove("active", "completed");
+                        }
+                    });
+                }
+
+                // Navigation button listeners
+                document
+                    .getElementById("nextBtnStep1")
+                    .addEventListener("click", () => {
+                        // You can add validation for step 1 here before proceeding
+                        currentStep++;
+                        updateFormView();
+                    });
+                document
+                    .getElementById("nextBtnStep2")
+                    .addEventListener("click", () => {
+                        currentStep++;
+                        updateFormView();
+                    });
+
+                document
+                    .getElementById("prevBtnStep2")
+                    .addEventListener("click", () => {
+                        currentStep--;
+                        updateFormView();
+                    });
+                document
+                    .getElementById("prevBtnStep3")
+                    .addEventListener("click", () => {
+                        currentStep--;
+                        updateFormView();
+                    });
+
+                // Form submission
+                sellerForm.addEventListener("submit", function (e) {
+                    e.preventDefault();
+                    // You would normally send data to a server here
+                    // For this example, we'll just show the confirmation message
+                    sellerForm.style.display = "none";
+                    document.querySelector(".progress-stepper").style.display =
+                        "none";
+                    document.getElementById(
+                        "confirmationMessage"
+                    ).style.display = "block";
+                });
+
+                // Live Password Validation
+                passwordInput.addEventListener("input", function () {
+                    const val = this.value;
+                    const validations = {
+                        length: val.length >= 8,
+                        uppercase: /[A-Z]/.test(val),
+                        number: /[0-9]/.test(val),
+                        special: /[!@#$%^&*()]/.test(val),
+                    };
+
+                    for (let key in validations) {
+                        if (validations[key]) {
+                            checks[key].classList.add("valid");
+                            checks[key].querySelector("i").className =
+                                "fa-solid fa-circle-check";
+                        } else {
+                            checks[key].classList.remove("valid");
+                            checks[key].querySelector("i").className =
+                                "fa-solid fa-circle-xmark";
+                        }
+                    }
+                });
+
+                // Initial setup
+                updateFormView();
+            });
+        </script>
+    </body>
+</html>

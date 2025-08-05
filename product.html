@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Stylee Online - الرئيسية</title>
+
+        <!-- Google Fonts (Tajawal) -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Bootstrap 5.3.2 CSS (RTL) -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css"
+            integrity="sha384-nU14brUcp6StFntEOOEBvcJm4huWjB0OcIeQ3fltAfSmuZFrkAif0T+UtNGlKKQv"
+            crossorigin="anonymous"
+        />
+
+        <!-- Font Awesome 6.4.2 CSS -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+            integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+        />
+        <link rel="stylesheet" href="main.css" />
+        <style>
+            /* =================== THEME & ROOT VARIABLES =================== */
+            :root {
+                --primary-purple: #8e44ad; /* A slightly more modern purple */
+                --primary-pink: #e91e63;
+                --dark-purple: #5d2248;
+                --light-bg: #f5f5f7; /* A soft, premium light background */
+                --text-color-primary: #1a1a1a;
+                --text-color-secondary: #555;
+                --border-color: #e0e0e0;
+
+                --primary-color: #882266;
+                --dark-color: #1a1a1a;
+                --light-gray: #f8f9fa;
+                --text-color: #333;
+                --font-family: "Tajawal", sans-serif;
+            }
+
+            /* =================== ENHANCED PRODUCT DETAIL PAGE STYLES =================== */
+            .product-detail-page {
+                background-color: var(--light-bg); /* Use the soft background */
+            }
+
+            .product-slider .swiper-button-next,
+            .product-slider .swiper-button-prev {
+                color: var(--primary-color);
+                background-color: rgba(255, 255, 255, 0.9);
+                border: 1px solid #ddd;
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+            }
+            .product-slider .swiper-button-next::after,
+            .product-slider .swiper-button-prev::after {
+                font-size: 1rem;
+                font-weight: 700;
+            }
+            .product-slider .swiper-button-prev {
+                left: 0;
+            }
+            .product-slider .swiper-button-next {
+                left: 15px;
+            }
+            /* --- Enhanced Gallery --- */
+            .main-image-container {
+                overflow: hidden;
+                border-radius: 16px; /* Larger radius for modern look */
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+            #main-product-image {
+                transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+                width: 100%;
+            }
+            .main-image-container:hover #main-product-image {
+                transform: scale(1.1); /* More pronounced zoom */
+            }
+            .thumbnail {
+                width: 80px;
+                height: 80px;
+                object-fit: cover;
+                cursor: pointer;
+                border-radius: 12px;
+                border: 2px solid transparent;
+                transition: all 0.3s ease;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            }
+            .thumbnail.active,
+            .thumbnail:hover {
+                border-color: var(--primary-purple);
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                transform: translateY(-2px);
+            }
+
+            /* --- Enhanced Product Details --- */
+            .product-title {
+                font-size: 2.2rem;
+                font-weight: 700;
+                color: var(--text-color-primary);
+            }
+            .product-price {
+                font-size: 2rem;
+                font-weight: 800;
+                color: var(--dark-purple);
+            }
+            .product-features-list {
+                list-style: none;
+                padding: 0;
+                color: var(--text-color-secondary);
+            }
+            .product-features-list li {
+                margin-bottom: 0.7rem;
+                display: flex;
+                align-items: center;
+            }
+            .product-features-list .fa-check-circle {
+                margin-inline-end: 10px;
+                color: #2ecc71; /* A brighter green */
+            }
+
+            /* --- Enhanced Option Selectors (Color/Size) --- */
+            .option-selector label {
+                position: relative;
+            }
+            .option-selector input[type="radio"] {
+                opacity: 0;
+                position: absolute;
+            }
+            .color-swatch {
+                display: inline-flex; /* Use flex to center the icon */
+                align-items: center;
+                justify-content: center;
+                width: 32px;
+                height: 32px;
+                border-radius: 50%;
+                cursor: pointer;
+                border: 2px solid #fff;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+                transition: all 0.2s ease-in-out;
+            }
+            .color-swatch::after {
+                /* The checkmark icon */
+                content: "\f00c"; /* Font Awesome check icon */
+                font-family: "Font Awesome 6 Free";
+                font-weight: 900;
+                font-size: 14px;
+                color: white;
+                opacity: 0;
+                transform: scale(0.5);
+                transition: all 0.2s ease-in-out;
+            }
+            .size-swatch {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                min-width: 45px;
+                height: 45px;
+                border-radius: 8px;
+                cursor: pointer;
+                border: 1px solid var(--border-color);
+                background-color: white;
+                font-weight: bold;
+                color: var(--text-color-secondary);
+                transition: all 0.2s ease-in-out;
+            }
+            /* Active state for both color and size */
+            .option-selector input:checked + span {
+                border-color: var(--primary-purple);
+                box-shadow: 0 0 0 2px var(--primary-purple);
+                color: var(--primary-purple); /* For size swatch text */
+            }
+            .option-selector input:checked + .color-swatch {
+                transform: scale(1.1);
+            }
+            /* Show the checkmark on selected color */
+            .option-selector input:checked + .color-swatch::after {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            /* --- Enhanced Meta & Share --- */
+            .product-meta p {
+                margin-bottom: 0.5rem;
+            }
+            .product-meta a {
+                text-decoration: none;
+                color: var(--primary-purple);
+                font-weight: 500;
+            }
+            .social-share a {
+                font-size: 1.2rem;
+                color: #aaa;
+                margin-inline-start: 10px;
+                transition: all 0.3s;
+            }
+            .social-share a:hover {
+                color: var(--primary-purple);
+                transform: scale(1.2);
+            }
+
+            /* --- Enhanced Buy Box & Quick Order --- */
+            .buy-box {
+                background: white;
+                border-radius: 16px;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+                position: sticky;
+                top: 20px; /* Make it sticky on scroll */
+                padding: 1.5rem;
+            }
+            .quick-order-box {
+                background: white;
+                border-radius: 16px;
+                border: 1px solid var(--border-color);
+            }
+            /* Enhanced Quantity Selector */
+            .quantity-selector {
+                display: flex;
+            }
+            .quantity-selector .btn {
+                border: 1px solid var(--border-color);
+                background-color: white;
+                color: var(--text-color-primary);
+            }
+            .quantity-selector input {
+                border-left: 0;
+                border-right: 0;
+                border-top: 1px solid var(--border-color);
+                border-bottom: 1px solid var(--border-color);
+            }
+            .quantity-selector .btn-minus {
+                border-radius: 0 8px 8px 0;
+            }
+            .quantity-selector .btn-plus {
+                border-radius: 8px 0 0 8px;
+            }
+
+            /* Buttons */
+            .btn-purple,
+            .btn-dark-purple {
+                font-weight: 600;
+                padding: 0.75rem;
+                border-radius: 8px;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 10px rgba(93, 34, 72, 0.1);
+            }
+            .btn-purple:hover,
+            .btn-dark-purple:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 15px rgba(93, 34, 72, 0.2);
+            }
+
+            /* --- Enhanced Product Tabs --- */
+            .product-tabs-section {
+                background-color: white;
+                padding: 1.5rem;
+                border-radius: 16px;
+                box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+            }
+            .product-tabs-section .nav-tabs {
+                border-bottom: 2px solid var(--border-color);
+            }
+            .product-tabs-section .nav-tabs .nav-link {
+                color: var(--text-color-secondary);
+                font-weight: 600;
+                border: 0 !important; /* Override bootstrap borders */
+                border-bottom: 3px solid transparent !important;
+                margin-bottom: -2px;
+            }
+            .product-tabs-section .nav-tabs .nav-link.active {
+                color: var(--primary-purple);
+                border-color: var(--primary-purple) !important;
+                background-color: transparent;
+            }
+            .product-tabs-section .tab-content {
+                border: 0; /* remove border around content */
+                padding-top: 1.5rem;
+            }
+
+            /* --- Enhanced Reviews --- */
+            .review-item {
+                padding-bottom: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .product-card {
+                border: 1px solid #eee;
+                border-radius: 10px;
+                overflow: hidden;
+                background-color: white;
+                text-align: center;
+                transition: box-shadow 0.3s ease;
+            }
+            .product-card:hover {
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+            .product-image {
+                position: relative;
+            }
+            .product-image img {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 6 / 7;
+                object-fit: cover;
+            }
+            .wishlist-btn {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                background-color: rgba(255, 255, 255, 0.8);
+                border: none;
+                width: 35px;
+                height: 35px;
+                border-radius: 50%;
+                color: var(--text-color);
+                font-size: 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                transition: all 0.2s ease;
+            }
+            .wishlist-btn:hover {
+                background-color: white;
+                transform: scale(1.1);
+            }
+            .wishlist-btn.active {
+                color: #e74c3c;
+            }
+            .discount-badge {
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                background-color: var(--primary-color);
+                color: white;
+                padding: 3px 8px;
+                border-radius: 5px;
+                font-size: 0.8rem;
+                font-weight: 500;
+            }
+            .product-info {
+                padding: 1rem;
+            }
+            .star-rating {
+                color: #f39c12;
+                margin-bottom: 0.5rem;
+            }
+            .star-rating .fa-regular {
+                color: #ccc;
+            }
+            .product-title {
+                font-size: 1rem;
+                font-weight: 500;
+                color: var(--text-color);
+                margin-bottom: 0.5rem;
+            }
+            .product-price {
+                font-size: 1.1rem;
+                font-weight: 700;
+                color: var(--primary-color);
+                margin-bottom: 1rem;
+            }
+            .btn-style {
+                background-color: var(--primary-color);
+                color: white;
+                border: 1px solid var(--primary-color);
+                border-radius: 8px;
+                padding: 0.5rem 1.5rem;
+                font-weight: 500;
+                transition: all 0.3s ease;
+            }
+            .btn-style:hover,
+            .btn-style:focus {
+                background-color: #6d1b51;
+                color: white;
+                border-color: #6d1b51;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- ======================= HEADER ======================= -->
+        <header>
+            <!-- Top Bar -->
+            <div class="top-bar d-none d-md-block">
+                <div
+                    class="container d-flex justify-content-center align-items-center gap-4"
+                >
+                    <span
+                        >خصم %21 على أول طلب لك باستخدام كود
+                        <span class="fw-bold">NEW</span> -
+                        <a href="#">اشترِ خصمك الآن</a></span
+                    >
+                    <button class="btn btn-sm btn-go">اذهب</button>
+                </div>
+            </div>
+            <!-- Main Header & Search -->
+            <div class="main-header py-2">
+                <div class="container">
+                    <!-- Top Row in Header -->
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <ul
+                                class="nav header-actions justify-content-center justify-content-lg-start"
+                            >
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link"
+                                        ><i
+                                            class="fa-solid fa-location-dot"
+                                        ></i>
+                                        أين ألإدارايات</a
+                                    >
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link"
+                                        ><i class="fa-solid fa-store"></i> إبدأ
+                                        البيع معنا</a
+                                    >
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6 d-none d-lg-block">
+                            <ul class="nav header-actions">
+                                <li class="nav-item dropdown lang-container">
+                                    <a
+                                        class="nav-link dropdown-toggle lang"
+                                        href="#"
+                                        role="button"
+                                        data-bs-toggle="dropdown"
+                                        aria-expanded="false"
+                                    >
+                                        <i class="fa-solid fa-globe"></i> Eng
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a class="dropdown-item" href="#"
+                                                >العربية</a
+                                            >
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#"
+                                                >English</a
+                                            >
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Bottom Row in Header -->
+                    <div class="row align-items-center mt-2">
+                        <div class="col-md-3 col-2">
+                            <a href="#" class="header-logo">
+                                <img
+                                    src="logo.png"
+                                    alt="Stylee Logo"
+                                    height="40"
+                                />
+                            </a>
+                        </div>
+                        <div class="col-lg-6 col-md-8 col-10">
+                            <div class="search-bar-wrapper position-relative">
+                                <form class="d-flex search-bar">
+                                    <input
+                                        class="form-control"
+                                        type="search"
+                                        placeholder="ابحث..."
+                                        aria-label="Search"
+                                    />
+                                    <button
+                                        class="btn btn-search d-flex align-items-center justify-content-center"
+                                        type="submit"
+                                    >
+                                        <i
+                                            class="fa-solid fa-magnifying-glass"
+                                        ></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-4">
+                            <ul
+                                class="nav user-actions justify-content-center mt-4 justify-content-lg-end"
+                            >
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link"
+                                        ><i class="fa-solid fa-rotate fs-5"></i
+                                    ></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link"
+                                        ><i class="fa-solid fa-heart fs-5"></i
+                                    ></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link"
+                                        ><i class="fa-solid fa-user fs-5"></i
+                                    ></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a
+                                        href="#"
+                                        class="nav-link position-relative"
+                                    >
+                                        <i
+                                            class="fa-solid fa-bag-shopping fs-5"
+                                        ></i>
+                                        <span
+                                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill"
+                                            >3</span
+                                        >
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category Navigation -->
+            <nav class="category-nav d-none d-lg-block">
+                <div class="container">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link all-categories" href="#"
+                                ><i class="fa-solid fa-bars me-2"></i> كل
+                                الأقسام</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">وصل حديثاً</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">مقاسات كبيرة</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">رجالي</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">نسائي</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">أطفال</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">الصحة والجمال</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">اكسسورات</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">الحقائب والأمتعة</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"> المطبخ</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <!-- ======================= BODY CONTENT (Placeholder) ======================= -->
+        <main class="product-detail-page pt-4 pb-5">
+            <div class="container">
+                <!-- Breadcrumb -->
+                <nav aria-label="breadcrumb" class="mb-4">
+                    <ol class="breadcrumb bg-transparent p-0 m-0">
+                        <li class="breadcrumb-item">
+                            <a href="#">الرئيسية</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="#">ملابس رجالي</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            قميص ورباط خصر بنطلون
+                        </li>
+                    </ol>
+                </nav>
+
+                <!-- Product Main Info -->
+                <section class="product-main-info">
+                    <div class="row g-4 g-lg-5">
+                        <!-- Product Images -->
+                        <div class="col-lg-5">
+                            <div class="product-images-gallery">
+                                <div class="main-image-container mb-3">
+                                    <img
+                                        src="./product.png"
+                                        alt="Product Main Image"
+                                        id="main-product-image"
+                                        class="img-fluid rounded"
+                                    />
+                                </div>
+                                <div class="thumbnail-images d-flex gap-2">
+                                    <img
+                                        src="./product.png"
+                                        class="thumbnail active"
+                                        alt="Thumb 1"
+                                    />
+                                    <img
+                                        src="./product.png"
+                                        class="thumbnail"
+                                        alt="Thumb 2"
+                                    />
+                                    <img
+                                        src="./product.png"
+                                        class="thumbnail"
+                                        alt="Thumb 3"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Details & Options -->
+                        <div class="col-lg-4">
+                            <h1 class="product-title h2">
+                                قميص ورباط خصر بنطلون - طقم صيفي
+                            </h1>
+                            <p class="product-price h3 fw-bold mb-3">
+                                40 ليرةسوري
+                            </p>
+                            <ul class="product-features-list">
+                                <li>
+                                    <i
+                                        class="fas fa-check-circle text-success"
+                                    ></i>
+                                    قماش قطني مريح ومناسب للصيف.
+                                </li>
+                                <li>
+                                    <i
+                                        class="fas fa-check-circle text-success"
+                                    ></i>
+                                    تصميم عصري وأنيق.
+                                </li>
+                                <li>
+                                    <i
+                                        class="fas fa-check-circle text-success"
+                                    ></i>
+                                    متوفر بألوان ومقاسات متعددة.
+                                </li>
+                            </ul>
+
+                            <hr />
+
+                            <!-- Color Options -->
+                            <div class="option-group mb-3">
+                                <strong class="me-2">اللون:</strong>
+                                <div
+                                    class="d-inline-flex gap-2 option-selector color-selector"
+                                >
+                                    <label
+                                        ><input
+                                            type="radio"
+                                            name="color"
+                                            value="black"
+                                            checked /><span
+                                            class="color-swatch"
+                                            style="background: black"
+                                        ></span
+                                    ></label>
+                                    <label
+                                        ><input
+                                            type="radio"
+                                            name="color"
+                                            value="blue" /><span
+                                            class="color-swatch"
+                                            style="background: navy"
+                                        ></span
+                                    ></label>
+                                    <label
+                                        ><input
+                                            type="radio"
+                                            name="color"
+                                            value="grey" /><span
+                                            class="color-swatch"
+                                            style="background: grey"
+                                        ></span
+                                    ></label>
+                                </div>
+                            </div>
+
+                            <!-- Size Options -->
+                            <div class="option-group mb-4">
+                                <strong class="me-2">المقاس:</strong>
+                                <div
+                                    class="d-inline-flex gap-2 option-selector size-selector"
+                                >
+                                    <label
+                                        ><input
+                                            type="radio"
+                                            name="size"
+                                            value="S"
+                                        /><span class="size-swatch"
+                                            >S</span
+                                        ></label
+                                    >
+                                    <label
+                                        ><input
+                                            type="radio"
+                                            name="size"
+                                            value="M"
+                                            checked
+                                        /><span class="size-swatch"
+                                            >M</span
+                                        ></label
+                                    >
+                                    <label
+                                        ><input
+                                            type="radio"
+                                            name="size"
+                                            value="L"
+                                        /><span class="size-swatch"
+                                            >L</span
+                                        ></label
+                                    >
+                                    <label
+                                        ><input
+                                            type="radio"
+                                            name="size"
+                                            value="XL"
+                                        /><span class="size-swatch"
+                                            >XL</span
+                                        ></label
+                                    >
+                                </div>
+                            </div>
+
+                            <!-- Product Meta -->
+                            <div class="product-meta">
+                                <p><strong>الرمز:</strong> TST-0125</p>
+                                <p>
+                                    <strong>القسم:</strong>
+                                    <a href="#">ملابس رجالي</a>,
+                                    <a href="#">أطقم</a>
+                                </p>
+                                <p>
+                                    <strong>البراند:</strong>
+                                    <a href="#">Stylee Brand</a>
+                                </p>
+                            </div>
+
+                            <div class="social-share mt-3">
+                                <strong class="me-2">شارك:</strong>
+                                <a href="#" class="social-icon"
+                                    ><i class="fab fa-twitter"></i
+                                ></a>
+                                <a href="#" class="social-icon"
+                                    ><i class="fab fa-facebook-f"></i
+                                ></a>
+                                <a href="#" class="social-icon"
+                                    ><i class="fab fa-instagram"></i
+                                ></a>
+                                <a href="#" class="social-icon"
+                                    ><i class="fab fa-whatsapp"></i
+                                ></a>
+                            </div>
+                        </div>
+
+                        <!-- Add to Cart & Buy Box -->
+                        <div class="col-lg-3">
+                            <div class="buy-box p-3">
+                                <p class="text-muted small mb-1">السعر الكلي</p>
+                                <p class="h4 fw-bold mb-3" data-base-price="40">
+                                    <span id="total-price">40</span> ليرةسوري
+                                </p>
+                                <div class="quantity-selector mb-3">
+                                    <button class="btn btn-light btn-minus">
+                                        -</button
+                                    ><input
+                                        type="number"
+                                        id="quantity-input"
+                                        class="form-control text-center"
+                                        value="1"
+                                        min="1"
+                                    /><button class="btn btn-light btn-plus">
+                                        +
+                                    </button>
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-purple">
+                                        <i
+                                            class="fas fa-shopping-cart me-2"
+                                        ></i>
+                                        إضافة للسلة
+                                    </button>
+                                    <button class="btn btn-dark-purple">
+                                        <i class="fas fa-bolt me-2"></i> شراء
+                                        الآن
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="quick-order-box text-center p-3 mt-3">
+                                <p class="fw-bold mb-1">
+                                    للطلب السريع عبر الهاتف
+                                </p>
+                                <a
+                                    href="tel:02538862516"
+                                    class="phone-number h5"
+                                    >(025) 3886 25 16</a
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Product Description Tabs -->
+                <section class="product-tabs-section mt-5">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button
+                                class="nav-link active"
+                                data-bs-toggle="tab"
+                                data-bs-target="#description-tab"
+                            >
+                                الوصف
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button
+                                class="nav-link"
+                                data-bs-toggle="tab"
+                                data-bs-target="#info-tab"
+                            >
+                                معلومات إضافية
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button
+                                class="nav-link"
+                                data-bs-toggle="tab"
+                                data-bs-target="#reviews-tab"
+                            >
+                                الآراء والتعليقات (3)
+                            </button>
+                        </li>
+                    </ul>
+                    <div class="tab-content p-4" id="myTabContent">
+                        <!-- Description Pane -->
+                        <div
+                            class="tab-pane fade show active"
+                            id="description-tab"
+                        >
+                            <p>
+                                جدد خزانة ملابسك مع طقم القميص والبنطلون الصيفي
+                                الأنيق. مصنوع من أجود أنواع القطن الخفيف، مما
+                                يجعله مثاليًا للأجواء الحارة ويوفر أقصى درجات
+                                الراحة طوال اليوم. يتميز القميص بتصميمه العصري
+                                بياقة الماندرين الأنيقة، بينما يأتي البنطلون
+                                برباط خصر مرن ليوفر مقاسًا مثالياً ومريحاً.
+                            </p>
+                            <img
+                                src="./product.png"
+                                class="img-fluid rounded my-3"
+                                alt="طقم صيفي"
+                            />
+                        </div>
+                        <!-- Additional Info Pane -->
+                        <div class="tab-pane fade" id="info-tab">
+                            <table class="table table-striped">
+                                <tbody>
+                                    <tr>
+                                        <th>الخامة</th>
+                                        <td>100% قطن</td>
+                                    </tr>
+                                    <tr>
+                                        <th>تعليمات العناية</th>
+                                        <td>
+                                            غسيل في الغسالة بماء بارد، لا تستخدم
+                                            المبيض، تجفيف على درجة منخفضة.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>بلد الصنع</th>
+                                        <td>تركيا</td>
+                                    </tr>
+                                    <tr>
+                                        <th>الألوان المتوفرة</th>
+                                        <td>أسود، كحلي، رمادي</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- Reviews Pane -->
+                        <div class="tab-pane fade" id="reviews-tab">
+                            <!-- Single Review -->
+                            <div class="review-item">
+                                <div class="d-flex">
+                                    <img
+                                        src="avatar.png"
+                                        class="rounded-circle"
+                                        width="50"
+                                        height="50"
+                                    />
+                                    <div class="ms-3">
+                                        <strong>علي أحمد</strong>
+                                        <p class="small text-muted mb-1">
+                                            20 أكتوبر 2023
+                                        </p>
+                                        <div class="star-rating">
+                                            <i class="fas fa-star"></i>...
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="mt-2">
+                                    جودة ممتازة وقماش مريح جداً. أنصح به بشدة.
+                                </p>
+                            </div>
+                            <!-- Add more reviews -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Related Products -->
+                <section class="related-products-section mt-5">
+                    <h3 class="section-title">منتجات قد تعجبك</h3>
+                    <div
+                        class="swiper product-slider related-products-carousel"
+                    >
+                        <div class="swiper-wrapper">
+                            <!-- Products will be repeated -->
+                            <div class="swiper-slide">
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        <img
+                                            src="./product.png"
+                                            alt="Product Name"
+                                        />
+                                        <button class="wishlist-btn">
+                                            <i class="fa-regular fa-heart"></i>
+                                        </button>
+                                    </div>
+                                    <div class="product-info">
+                                        <h3 class="product-title">
+                                            قميص و رباط خصر بنطلون
+                                        </h3>
+                                        <p class="product-price">40 ليرةسوري</p>
+                                        <button class="btn btn-style w-100">
+                                            + أضف للسلة
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        <img
+                                            src="./product.png"
+                                            alt="Product Name"
+                                        />
+                                        <button class="wishlist-btn active">
+                                            <i class="fa-solid fa-heart"></i>
+                                        </button>
+                                    </div>
+                                    <div class="product-info">
+                                        <h3 class="product-title">
+                                            قميص و رباط خصر بنطلون
+                                        </h3>
+                                        <p class="product-price">40 ليرةسوري</p>
+                                        <button class="btn btn-style w-100">
+                                            + أضف للسلة
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        <img
+                                            src="./product.png"
+                                            alt="Product Name"
+                                        />
+                                        <button class="wishlist-btn">
+                                            <i class="fa-regular fa-heart"></i>
+                                        </button>
+                                    </div>
+                                    <div class="product-info">
+                                        <h3 class="product-title">
+                                            قميص و رباط خصر بنطلون
+                                        </h3>
+                                        <p class="product-price">40 ليرةسوري</p>
+                                        <button class="btn btn-style w-100">
+                                            + أضف للسلة
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        <img
+                                            src="./product.png"
+                                            alt="Product Name"
+                                        />
+                                        <button class="wishlist-btn">
+                                            <i class="fa-regular fa-heart"></i>
+                                        </button>
+                                    </div>
+                                    <div class="product-info">
+                                        <h3 class="product-title">
+                                            قميص و رباط خصر بنطلون
+                                        </h3>
+                                        <p class="product-price">40 ليرةسوري</p>
+                                        <button class="btn btn-style w-100">
+                                            + أضف للسلة
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- ======================= FOOTER ======================= -->
+        <footer>
+            <div class="pre-footer-section">
+                <div class="container">
+                    <div class="pre-footer-card">
+                        <div class="row g-0 align-items-center">
+                            <div
+                                class="col-lg-1 d-none d-lg-flex flex-column align-items-center justify-content-center pre-footer-social gap-4"
+                            >
+                                <a href="#"
+                                    ><i class="fab fa-facebook-f"></i
+                                ></a>
+                                <a href="#"><i class="fab fa-x"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                            <div class="col-lg-8 px-4 py-5 p-md-5">
+                                <h2 class="fw-bold">
+                                    كن على تواصل! واحصل على
+                                    <span> خصم %20</span>
+                                </h2>
+                                <p class="text-muted mt-3">
+                                    لتبقى على اتصال، شارك في قائمتنا البريدية
+                                    وكن على اطلاع على أحدث عروضنا.
+                                </p>
+                                <form class="mt-4">
+                                    <div class="input-group">
+                                        <input
+                                            type="email"
+                                            class="form-control form-control-lg"
+                                            placeholder="أدخل بريدك الإلكتروني"
+                                            aria-label="Recipient's username"
+                                            aria-describedby="button-addon2"
+                                        />
+                                        <button
+                                            class="btn btn-subscribe"
+                                            type="button"
+                                            id="button-addon2"
+                                        >
+                                            اشترك
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-footer">
+                <div class="container">
+                    <div class="row gy-4 align-items-center">
+                        <div class="col-lg-2 col-6">
+                            <img
+                                src="logo.png"
+                                alt="Stylee Logo"
+                                height="100"
+                                class="mb-3"
+                            />
+                        </div>
+                        <div class="col-lg-2 col-6">
+                            <h5 class="footer-title">روابط سريعة</h5>
+                            <ul class="list-unstyled footer-links">
+                                <li class="mb-2"><a href="#">الرئيسية</a></li>
+                                <li class="mb-2">
+                                    <a href="#">كل المنتجات</a>
+                                </li>
+                                <li class="mb-2"><a href="#">كل المتاجر</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2 col-6">
+                            <h5 class="footer-title">الدعم</h5>
+                            <ul class="list-unstyled footer-links">
+                                <li class="mb-2">
+                                    <a href="#">سياسة الخصوصية</a>
+                                </li>
+                                <li class="mb-2">
+                                    <a href="#">سياسة الاسترجاع</a>
+                                </li>
+                                <li class="mb-2">
+                                    <a href="#">الشروط و الأحكام</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-3 col-6">
+                            <h5 class="footer-title">تواصل معنا</h5>
+                            <ul class="list-unstyled footer-links">
+                                <li class="mb-2">
+                                    <a href="mailto:styleeonline@email.com"
+                                        ><i
+                                            class="fa-solid fa-envelope me-2"
+                                        ></i>
+                                        styleeonline@email.com</a
+                                    >
+                                </li>
+                                <li class="mb-5">
+                                    <a href="tel:+123456789"
+                                        ><i class="fa-solid fa-phone me-2"></i>
+                                        +123456789</a
+                                    >
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2 col-6">
+                            <img
+                                src="footer.png"
+                                alt="Happy Kids"
+                                class="girls-img d-none d-lg-block"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sub-footer text-center">
+                <span
+                    >جميع الحقوق محفوظة لـ
+                    <a href="#" class="text-white"
+                        >www.styleeonline.com</a
+                    ></span
+                >
+            </div>
+        </footer>
+        <!-- Bootstrap 5.3.2 JS Bundle -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"
+        ></script>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // --- Product Image Gallery ---
+                const mainImage = document.getElementById("main-product-image");
+                const thumbnails = document.querySelectorAll(".thumbnail");
+                if (mainImage) {
+                    // Check if elements exist before adding listeners
+                    thumbnails.forEach((thumb) => {
+                        thumb.addEventListener("click", function () {
+                            mainImage.src = this.src;
+                            thumbnails.forEach((t) =>
+                                t.classList.remove("active")
+                            );
+                            this.classList.add("active");
+                        });
+                    });
+                }
+
+                // --- Quantity Selector & Dynamic Total Price ---
+                const quantityInput = document.getElementById("quantity-input");
+                const totalPriceContainer =
+                    document.querySelector("[data-base-price]");
+
+                if (quantityInput && totalPriceContainer) {
+                    // Check if elements exist
+                    const basePrice = parseFloat(
+                        totalPriceContainer.dataset.basePrice
+                    );
+                    const totalPriceEl = document.getElementById("total-price");
+
+                    function updatePrice() {
+                        const quantity = parseInt(quantityInput.value) || 1; // Default to 1 if not a valid number
+                        totalPriceEl.textContent = (
+                            basePrice * quantity
+                        ).toFixed(0); // Assuming integer price, no decimals
+                    }
+
+                    // Attach listeners to buttons and input
+                    document
+                        .querySelector(".btn-plus")
+                        ?.addEventListener("click", () => {
+                            quantityInput.value =
+                                parseInt(quantityInput.value) + 1;
+                            updatePrice();
+                        });
+
+                    document
+                        .querySelector(".btn-minus")
+                        ?.addEventListener("click", () => {
+                            if (quantityInput.value > 1) {
+                                quantityInput.value =
+                                    parseInt(quantityInput.value) - 1;
+                                updatePrice();
+                            }
+                        });
+
+                    quantityInput.addEventListener("input", updatePrice);
+                }
+
+                // --- Related Products Carousel (Swiper.js) ---
+                // Make sure to add products inside the .swiper-wrapper in your HTML
+                const relatedSwiper = new Swiper(".related-products-carousel", {
+                    loop: false, // Better for related products so it doesn't loop infinitely
+                    spaceBetween: 20,
+                    navigation: {
+                        // Add navigation arrows for better usability
+                        nextEl: ".swiper-button-next",
+                        prevEl: ".swiper-button-prev",
+                    },
+                    breakpoints: {
+                        576: { slidesPerView: 2 },
+                        768: { slidesPerView: 3 },
+                        992: { slidesPerView: 4 },
+                    },
+                });
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,218 @@
+:root {
+    --dark-purple: #86326a;
+    --primary-purple: #a63f82;
+    --light-gray: #f5f5f5;
+    --dark-gray: #333333;
+    --text-color: #555;
+    --white: #fff;
+}
+
+body {
+    font-family: "Tajawal", sans-serif;
+    background-color: #e9ecef; /* A light background to see the components */
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+.row {
+    margin: 0;
+}
+* {
+    text-align: right;
+}
+a {
+    text-decoration: none;
+}
+/* --- الهيدر Header --- */
+
+/* 1. الشريط العلوي Top Bar */
+.top-bar {
+    background-color: #2b2b2b;
+    color: var(--white);
+    font-size: 0.9rem;
+    padding: 0.5rem 0;
+}
+.top-bar a {
+    color: var(--primary-purple);
+    font-weight: bold;
+}
+.top-bar .btn-go {
+    background-color: var(--white);
+    color: #333;
+    border-radius: 50rem;
+    padding: 0.2rem 1.2rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* 2. الهيدر الرئيسي Main Header */
+.main-header {
+    background-color: var(--white);
+    border-bottom: 1px solid #eee;
+}
+.nav-item.lang-container {
+    width: 100%;
+}
+.header-actions .nav-link.lang {
+    justify-content: flex-end;
+}
+.header-actions .nav-link,
+.user-actions .nav-link {
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+.header-actions .nav-link:hover,
+.user-actions .nav-link:hover {
+    color: var(--primary-purple);
+}
+
+.user-actions .nav-link .badge {
+    background-color: var(--primary-purple) !important;
+    color: var(--white) !important;
+    font-size: 0.7rem;
+    line-height: 1;
+    padding: 4px 6px;
+}
+
+.search-bar .form-control {
+    border-radius: 50rem;
+    border: 1px solid #ddd;
+    padding-inline-start: 1rem;
+    padding: 0.5rem 0.75rem;
+}
+.translate-middle {
+    transform: translate(100%, -17%) !important;
+}
+.search-bar .btn-search {
+    background-color: var(--dark-purple);
+    color: var(--white);
+    border-radius: 50% !important;
+    width: 40px;
+    height: 40px;
+    z-index: 3;
+    position: absolute;
+    left: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* 3. شريط الأقسام Category Nav */
+.category-nav {
+    background-color: var(--light-gray);
+}
+.category-nav .nav-link {
+    color: var(--text-color);
+    padding: 0.75rem 1.2rem;
+}
+.category-nav .nav-link.active,
+.category-nav .nav-link:hover {
+    color: var(--primary-purple);
+}
+.category-nav .all-categories {
+    background-color: var(--dark-purple);
+    color: var(--white);
+}
+.category-nav .all-categories:hover {
+    color: #eee;
+}
+
+/* Responsive Navbar adjustments */
+@media (max-width: 991.98px) {
+    .header-logo {
+        order: -1;
+    }
+}
+
+/* --- الفوتر Footer --- */
+footer {
+    position: relative;
+}
+/* 1. قسم الاشتراك Pre-Footer */
+.pre-footer-section {
+    margin-top: 5rem;
+    margin-bottom: -100px; /* يسحب الفوتر الرئيسي للأعلى */
+    position: relative;
+    z-index: 10;
+}
+.pre-footer-section h2 span {
+    color: var(--primary-purple);
+}
+.pre-footer-card {
+    background-color: var(--white);
+    color: var(--dark-gray);
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* يضمن بقاء العناصر داخل الحدود المنحنية */
+}
+.girls-img {
+    position: absolute;
+    width: 34%;
+    bottom: 10%;
+    left: 0;
+    z-index: 99999;
+}
+.pre-footer-card .btn-subscribe {
+    background-color: var(--dark-purple);
+    color: var(--white);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.pre-footer-card .form-control {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.pre-footer-social a {
+    color: var(--dark-gray);
+    font-size: 1.2rem;
+    transition: color 0.2s;
+}
+.pre-footer-social a:hover {
+    color: var(--primary-purple);
+}
+
+/* 2. الفوتر الرئيسي Main Footer */
+.main-footer {
+    background-color: #2b2b2b;
+    color: #adb5bd;
+    padding-top: 150px; /* يترك مساحة للـ pre-footer */
+    padding-bottom: 2rem;
+}
+.main-footer .footer-title {
+    color: var(--white);
+    font-weight: bold;
+    margin-bottom: 1.2rem;
+}
+.main-footer .footer-links a {
+    color: #adb5bd;
+    text-decoration: none;
+    transition: color 0.2s, padding-right 0.2s;
+}
+.main-footer .footer-links a:hover {
+    color: var(--white);
+    padding-right: 5px;
+}
+
+/* 3. شريط الحقوق Sub-Footer */
+.sub-footer {
+    background-color: #1e1e1e;
+    color: #adb5bd;
+    font-size: 0.9rem;
+    padding: 1rem 0;
+}
+nav[aria-label="breadcrumb"] {
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 13px;
+}
+.breadcrumb-item.active {
+    color: var(--dark-purple);
+    font-weight: bold;
+}
+.breadcrumb a {
+    color: #6c757d;
+    text-decoration: none;
+}

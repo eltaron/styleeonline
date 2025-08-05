@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Stylee Online - الرئيسية</title>
+
+        <!-- Google Fonts (Tajawal) -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Bootstrap 5.3.2 CSS (RTL) -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css"
+            integrity="sha384-nU14brUcp6StFntEOOEBvcJm4huWjB0OcIeQ3fltAfSmuZFrkAif0T+UtNGlKKQv"
+            crossorigin="anonymous"
+        />
+
+        <!-- Font Awesome 6.4.2 CSS -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+            integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+
+        <link rel="stylesheet" href="main.css" />
+        <style>
+            /* --- Invoice Page --- */
+
+            .invoice-box {
+                background: #fff;
+                padding: 2rem;
+                border-radius: 12px;
+                border: 1px solid #dee2e6;
+                box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
+            }
+
+            .invoice-header {
+                border-bottom: 2px solid #f1f1f1;
+                padding-bottom: 1.5rem;
+            }
+
+            .invoice-details {
+                border-bottom: 2px solid #f1f1f1;
+                padding-bottom: 1rem;
+            }
+            .invoice-details h5 {
+                color: var(--dark-purple, #86326a);
+            }
+
+            .invoice-items-table .table > :not(caption) > * > * {
+                vertical-align: middle;
+            }
+            .invoice-items-table .table thead {
+                background-color: #f8f9fa;
+                color: #6c757d;
+                font-size: 0.9rem;
+                text-transform: uppercase;
+            }
+
+            .invoice-summary {
+                background-color: #f8f9fa;
+                padding: 1rem;
+                border-radius: 8px;
+            }
+            .invoice-summary .summary-item {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 0.5rem;
+            }
+            .invoice-summary .grand-total {
+                display: flex;
+                justify-content: space-between;
+                font-size: 1.25rem;
+                color: var(--dark-purple, #86326a);
+                margin-top: 1rem;
+                padding-top: 1rem;
+                border-top: 2px solid #dee2e6;
+            }
+
+            .invoice-footer {
+                border-top: 2px solid #f1f1f1;
+                padding-top: 1rem;
+            }
+
+            /* Print Styles */
+            @media print {
+                body {
+                    background-color: #fff !important;
+                }
+                .print-hide,
+                footer.main-footer,
+                header.main-header,
+                .top-bar,
+                .category-nav,
+                .breadcrumb {
+                    display: none !important;
+                }
+                .invoice-page {
+                    margin: 0 !important;
+                    padding: 0 !important;
+                }
+                .invoice-box {
+                    width: 100%;
+                    margin: 0;
+                    padding: 0;
+                    border: none !important;
+                    border-radius: 0 !important;
+                    box-shadow: none !important;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- ======================= HEADER ======================= -->
+        <header>
+            <!-- Top Bar -->
+            <div class="top-bar d-none d-md-block">
+                <div
+                    class="container d-flex justify-content-center align-items-center gap-4"
+                >
+                    <span
+                        >خصم %21 على أول طلب لك باستخدام كود
+                        <span class="fw-bold">NEW</span> -
+                        <a href="#">اشترِ خصمك الآن</a></span
+                    >
+                    <button class="btn btn-sm btn-go">اذهب</button>
+                </div>
+            </div>
+            <!-- Main Header & Search -->
+            <div class="main-header py-2">
+                <div class="container">
+                    <!-- Top Row in Header -->
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <ul
+                                class="nav header-actions justify-content-center justify-content-lg-start"
+                            >
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link"
+                                        ><i
+                                            class="fa-solid fa-location-dot"
+                                        ></i>
+                                        أين ألإدارايات</a
+                                    >
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link"
+                                        ><i class="fa-solid fa-store"></i> إبدأ
+                                        البيع معنا</a
+                                    >
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6 d-none d-lg-block">
+                            <ul class="nav header-actions">
+                                <li class="nav-item dropdown lang-container">
+                                    <a
+                                        class="nav-link dropdown-toggle lang"
+                                        href="#"
+                                        role="button"
+                                        data-bs-toggle="dropdown"
+                                        aria-expanded="false"
+                                    >
+                                        <i class="fa-solid fa-globe"></i> Eng
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a class="dropdown-item" href="#"
+                                                >العربية</a
+                                            >
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#"
+                                                >English</a
+                                            >
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Bottom Row in Header -->
+                    <div class="row align-items-center mt-2">
+                        <div class="col-md-3 col-2">
+                            <a href="#" class="header-logo">
+                                <img
+                                    src="logo.png"
+                                    alt="Stylee Logo"
+                                    height="40"
+                                />
+                            </a>
+                        </div>
+                        <div class="col-lg-6 col-md-8 col-10">
+                            <div class="search-bar-wrapper position-relative">
+                                <form class="d-flex search-bar">
+                                    <input
+                                        class="form-control"
+                                        type="search"
+                                        placeholder="ابحث..."
+                                        aria-label="Search"
+                                    />
+                                    <button
+                                        class="btn btn-search d-flex align-items-center justify-content-center"
+                                        type="submit"
+                                    >
+                                        <i
+                                            class="fa-solid fa-magnifying-glass"
+                                        ></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-4">
+                            <ul
+                                class="nav user-actions justify-content-center mt-4 justify-content-lg-end"
+                            >
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link"
+                                        ><i class="fa-solid fa-rotate fs-5"></i
+                                    ></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link"
+                                        ><i class="fa-solid fa-heart fs-5"></i
+                                    ></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link"
+                                        ><i class="fa-solid fa-user fs-5"></i
+                                    ></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a
+                                        href="#"
+                                        class="nav-link position-relative"
+                                    >
+                                        <i
+                                            class="fa-solid fa-bag-shopping fs-5"
+                                        ></i>
+                                        <span
+                                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill"
+                                            >3</span
+                                        >
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category Navigation -->
+            <nav class="category-nav d-none d-lg-block">
+                <div class="container">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link all-categories" href="#"
+                                ><i class="fa-solid fa-bars me-2"></i> كل
+                                الأقسام</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">وصل حديثاً</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">مقاسات كبيرة</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">رجالي</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">نسائي</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">أطفال</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">الصحة والجمال</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">اكسسورات</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">الحقائب والأمتعة</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"> المطبخ</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <!-- ======================= BODY CONTENT (Placeholder) ======================= -->
+        <main class="invoice-page container my-4 my-lg-5">
+            <!-- Action buttons (Print, etc.) -->
+            <div class="d-flex justify-content-end mb-3 print-hide">
+                <button class="btn btn-primary" onclick="window.print()">
+                    <i class="fas fa-print me-2"></i> طباعة الفاتورة
+                </button>
+            </div>
+
+            <!-- The Invoice Box -->
+            <div class="invoice-box" id="invoice">
+                <!-- Header -->
+                <header class="invoice-header">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <img src="logo.png" alt="Stylee Logo" height="50" />
+                        </div>
+                        <div class="col-md-6 text-md-end mt-3 mt-md-0">
+                            <h2 class="mb-1">فاتورة</h2>
+                            <p class="text-muted mb-0">
+                                <strong>رقم الطلب:</strong> #INV-12345
+                            </p>
+                            <p class="text-muted mb-0">
+                                <strong>تاريخ الطلب:</strong> 24 أكتوبر 2023
+                            </p>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Billing and Shipping Info -->
+                <section class="invoice-details my-4">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5 class="fw-bold">عنوان الفوترة:</h5>
+                            <p class="mb-0">احمد محمد جمعه الطارون</p>
+                            <p class="mb-0">شارع الملك فهد، حي العليا</p>
+                            <p class="mb-0">الرياض، المملكة العربية السعودية</p>
+                            <p class="mb-0">swoo@gmail.com</p>
+                        </div>
+                        <div class="col-md-6 text-md-end mt-3 mt-md-0">
+                            <h5 class="fw-bold">عنوان الشحن:</h5>
+                            <p class="mb-0">احمد محمد جمعه الطارون</p>
+                            <p class="mb-0">شارع الملك فهد، حي العليا</p>
+                            <p class="mb-0">الرياض، المملكة العربية السعودية</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Order Items Table -->
+                <section class="invoice-items-table">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="table-light">
+                                <tr>
+                                    <th scope="col" style="width: 50px">#</th>
+                                    <th scope="col">المنتج</th>
+                                    <th scope="col" class="text-center">
+                                        الكمية
+                                    </th>
+                                    <th scope="col" class="text-end">
+                                        سعر الوحدة
+                                    </th>
+                                    <th scope="col" class="text-end">
+                                        الإجمالي
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img
+                                                src="cart-item-image.png"
+                                                width="40"
+                                                class="me-3 rounded"
+                                                alt="item"
+                                            />
+                                            <div>
+                                                <strong>شنطة تسوق صيفي</strong>
+                                                <p
+                                                    class="text-muted small mb-0"
+                                                >
+                                                    اللون: أرجواني
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-center">2</td>
+                                    <td class="text-end">500.00 ر.س</td>
+                                    <td class="text-end">1000.00 ر.س</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img
+                                                src="product-placeholder.png"
+                                                width="40"
+                                                class="me-3 rounded"
+                                                alt="item"
+                                            />
+                                            <div>
+                                                <strong>فستان صيفي أنيق</strong>
+                                                <p
+                                                    class="text-muted small mb-0"
+                                                >
+                                                    المقاس: M
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-center">1</td>
+                                    <td class="text-end">250.00 ر.س</td>
+                                    <td class="text-end">250.00 ر.س</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Summary and Payment Method -->
+                <section class="invoice-summary-payment mt-4">
+                    <div class="row">
+                        <div class="col-lg-6 mb-3 mb-lg-0">
+                            <h5 class="fw-bold">طريقة الدفع:</h5>
+                            <p>
+                                <strong>بطاقة ائتمان:</strong> **** **** ****
+                                4242
+                            </p>
+                            <p>
+                                <strong>حالة الدفع:</strong>
+                                <span class="badge bg-success">مدفوع</span>
+                            </p>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="invoice-summary">
+                                <div class="summary-item">
+                                    <span>المجموع الفرعي</span
+                                    ><span>1250.00 ر.س</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span>تكلفة الشحن</span
+                                    ><span>50.00 ر.س</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span>الضريبة (15%)</span
+                                    ><span>187.50 ر.س</span>
+                                </div>
+                                <div class="summary-item text-danger">
+                                    <span>خصم (كود NEW20)</span
+                                    ><span>-250.00 ر.س</span>
+                                </div>
+                                <div class="grand-total">
+                                    <span class="fw-bold"
+                                        >الإجمالي النهائي</span
+                                    >
+                                    <span class="fw-bold">1237.50 ر.س</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Footer -->
+                <footer class="invoice-footer mt-5 text-center">
+                    <p class="text-muted">شكرًا لتسوقك مع Stylee Online!</p>
+                    <p class="text-muted small">
+                        إذا كان لديك أي استفسارات بخصوص هذه الفاتورة, يرجى
+                        التواصل معنا عبر support@styleeonline.com
+                    </p>
+                </footer>
+            </div>
+        </main>
+
+        <!-- ======================= FOOTER ======================= -->
+        <footer>
+            <div class="pre-footer-section">
+                <div class="container">
+                    <div class="pre-footer-card">
+                        <div class="row g-0 align-items-center">
+                            <div
+                                class="col-lg-1 d-none d-lg-flex flex-column align-items-center justify-content-center pre-footer-social gap-4"
+                            >
+                                <a href="#"
+                                    ><i class="fab fa-facebook-f"></i
+                                ></a>
+                                <a href="#"><i class="fab fa-x"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                            <div class="col-lg-8 px-4 py-5 p-md-5">
+                                <h2 class="fw-bold">
+                                    كن على تواصل! واحصل على
+                                    <span> خصم %20</span>
+                                </h2>
+                                <p class="text-muted mt-3">
+                                    لتبقى على اتصال، شارك في قائمتنا البريدية
+                                    وكن على اطلاع على أحدث عروضنا.
+                                </p>
+                                <form class="mt-4">
+                                    <div class="input-group">
+                                        <input
+                                            type="email"
+                                            class="form-control form-control-lg"
+                                            placeholder="أدخل بريدك الإلكتروني"
+                                            aria-label="Recipient's username"
+                                            aria-describedby="button-addon2"
+                                        />
+                                        <button
+                                            class="btn btn-subscribe"
+                                            type="button"
+                                            id="button-addon2"
+                                        >
+                                            اشترك
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-footer">
+                <div class="container">
+                    <div class="row gy-4 align-items-center">
+                        <div class="col-lg-2 col-6">
+                            <img
+                                src="logo.png"
+                                alt="Stylee Logo"
+                                height="100"
+                                class="mb-3"
+                            />
+                        </div>
+                        <div class="col-lg-2 col-6">
+                            <h5 class="footer-title">روابط سريعة</h5>
+                            <ul class="list-unstyled footer-links">
+                                <li class="mb-2"><a href="#">الرئيسية</a></li>
+                                <li class="mb-2">
+                                    <a href="#">كل المنتجات</a>
+                                </li>
+                                <li class="mb-2"><a href="#">كل المتاجر</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2 col-6">
+                            <h5 class="footer-title">الدعم</h5>
+                            <ul class="list-unstyled footer-links">
+                                <li class="mb-2">
+                                    <a href="#">سياسة الخصوصية</a>
+                                </li>
+                                <li class="mb-2">
+                                    <a href="#">سياسة الاسترجاع</a>
+                                </li>
+                                <li class="mb-2">
+                                    <a href="#">الشروط و الأحكام</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-3 col-6">
+                            <h5 class="footer-title">تواصل معنا</h5>
+                            <ul class="list-unstyled footer-links">
+                                <li class="mb-2">
+                                    <a href="mailto:styleeonline@email.com"
+                                        ><i
+                                            class="fa-solid fa-envelope me-2"
+                                        ></i>
+                                        styleeonline@email.com</a
+                                    >
+                                </li>
+                                <li class="mb-5">
+                                    <a href="tel:+123456789"
+                                        ><i class="fa-solid fa-phone me-2"></i>
+                                        +123456789</a
+                                    >
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2 col-6">
+                            <img
+                                src="footer.png"
+                                alt="Happy Kids"
+                                class="girls-img d-none d-lg-block"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sub-footer text-center">
+                <span
+                    >جميع الحقوق محفوظة لـ
+                    <a href="#" class="text-white"
+                        >www.styleeonline.com</a
+                    ></span
+                >
+            </div>
+        </footer>
+        <!-- Bootstrap 5.3.2 JS Bundle -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"
+        ></script>
+    </body>
+</html>

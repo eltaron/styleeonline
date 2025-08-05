@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Stylee Online - الرئيسية</title>
+
+        <!-- Google Fonts (Tajawal) -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Bootstrap 5.3.2 CSS (RTL) -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css"
+            integrity="sha384-nU14brUcp6StFntEOOEBvcJm4huWjB0OcIeQ3fltAfSmuZFrkAif0T+UtNGlKKQv"
+            crossorigin="anonymous"
+        />
+
+        <!-- Font Awesome 6.4.2 CSS -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+            integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+
+        <link rel="stylesheet" href="main.css" />
+        <link rel="stylesheet" href="index.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+        />
+        <style>
+            /* ======================= CATEGORY PAGE STYLING ======================= */
+            .category-page {
+                background-color: white;
+                color: var(--text-color);
+            }
+            .breadcrumb-item a {
+                color: var(--primary-color);
+                text-decoration: none;
+            }
+            .breadcrumb-item.active {
+                color: #6c757d;
+            }
+            .category-title {
+                color: var(--dark-color);
+                font-weight: 700;
+            }
+            .category-description {
+                color: #555;
+                max-width: 600px;
+            }
+            /* ======================= CATEGORY PROMO SLIDER ======================= */
+            .category-promo-banner {
+                position: relative;
+                height: 200px;
+                border-radius: 10px;
+                background-size: cover;
+                background-position: center;
+                color: white;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding: 2rem;
+                overflow: hidden;
+            }
+            .category-promo-banner::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 1;
+            }
+            .category-promo-banner h3,
+            .category-promo-banner p {
+                position: relative;
+                z-index: 2;
+                margin: 0;
+                font-weight: 700;
+            }
+            .category-promo-banner h3 {
+                font-size: 2rem;
+            }
+
+            .category-promo-slider .swiper-pagination-bullet-active {
+                background-color: var(--primary-color);
+            }
+
+            /* ======================= FILTER SIDEBAR ======================= */
+            .filter-sidebar {
+                background-color: #f8f9fa;
+                border-radius: 10px;
+                padding: 1.5rem;
+            }
+            .filter-widget {
+                padding-bottom: 1.5rem;
+                margin-bottom: 1.5rem;
+                border-bottom: 1px solid #eee;
+            }
+            .filter-widget:last-child {
+                border-bottom: none;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+            .widget-title {
+                font-weight: 700;
+                color: var(--text-color);
+                margin-bottom: 1rem;
+                font-size: 1.1rem;
+            }
+            .category-filter-list li a {
+                display: flex;
+                justify-content: space-between;
+                padding: 0.5rem 0;
+                color: #555;
+                text-decoration: none;
+                transition: all 0.2s ease;
+            }
+            .category-filter-list li a:hover,
+            .category-filter-list li a.active {
+                color: var(--primary-color);
+                font-weight: 700;
+            }
+            .category-filter-list li a .count {
+                color: #999;
+            }
+            .size-selector,
+            .color-selector {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+            .size-selector button {
+                border: 1px solid #ddd;
+                background: white;
+                width: 40px;
+                height: 40px;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            .size-selector button.active,
+            .size-selector button:hover {
+                background-color: var(--primary-color);
+                color: white;
+                border-color: var(--primary-color);
+            }
+
+            .color-swatch {
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                cursor: pointer;
+                transition: transform 0.2s;
+            }
+            .color-swatch:hover {
+                transform: scale(1.1);
+            }
+            .color-swatch.active {
+                outline: 2px solid var(--primary-color);
+                outline-offset: 2px;
+            }
+            /* ======================= PAGINATION ======================= */
+            .pagination .page-item .page-link {
+                color: var(--primary-color);
+            }
+            .pagination .page-item.active .page-link {
+                background-color: var(--primary-color);
+                border-color: var(--primary-color);
+                color: white;
+            }
+            .pagination .page-item.disabled .page-link {
+                color: #6c757d;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- ======================= HEADER ======================= -->
+        <header>
+            <!-- Top Bar -->
+            <div class="top-bar d-none d-md-block">
+                <div
+                    class="container d-flex justify-content-center align-items-center gap-4"
+                >
+                    <span
+                        >خصم %21 على أول طلب لك باستخدام كود
+                        <span class="fw-bold">NEW</span> -
+                        <a href="#">اشترِ خصمك الآن</a></span
+                    >
+                    <button class="btn btn-sm btn-go">اذهب</button>
+                </div>
+            </div>
+            <!-- Main Header & Search -->
+            <div class="main-header py-2">
+                <div class="container">
+                    <!-- Top Row in Header -->
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <ul
+                                class="nav header-actions justify-content-center justify-content-lg-start"
+                            >
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link"
+                                        ><i
+                                            class="fa-solid fa-location-dot"
+                                        ></i>
+                                        أين ألإدارايات</a
+                                    >
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link"
+                                        ><i class="fa-solid fa-store"></i> إبدأ
+                                        البيع معنا</a
+                                    >
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6 d-none d-lg-block">
+                            <ul class="nav header-actions">
+                                <li class="nav-item dropdown lang-container">
+                                    <a
+                                        class="nav-link dropdown-toggle lang"
+                                        href="#"
+                                        role="button"
+                                        data-bs-toggle="dropdown"
+                                        aria-expanded="false"
+                                    >
+                                        <i class="fa-solid fa-globe"></i> Eng
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a class="dropdown-item" href="#"
+                                                >العربية</a
+                                            >
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#"
+                                                >English</a
+                                            >
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Bottom Row in Header -->
+                    <div class="row align-items-center mt-2">
+                        <div class="col-md-3 col-2">
+                            <a href="#" class="header-logo">
+                                <img
+                                    src="logo.png"
+                                    alt="Stylee Logo"
+                                    height="40"
+                                />
+                            </a>
+                        </div>
+                        <div class="col-lg-6 col-md-8 col-10">
+                            <div class="search-bar-wrapper position-relative">
+                                <form class="d-flex search-bar">
+                                    <input
+                                        class="form-control"
+                                        type="search"
+                                        placeholder="ابحث..."
+                                        aria-label="Search"
+                                    />
+                                    <button
+                                        class="btn btn-search d-flex align-items-center justify-content-center"
+                                        type="submit"
+                                    >
+                                        <i
+                                            class="fa-solid fa-magnifying-glass"
+                                        ></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-4">
+                            <ul
+                                class="nav user-actions justify-content-center mt-4 justify-content-lg-end"
+                            >
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link"
+                                        ><i class="fa-solid fa-rotate fs-5"></i
+                                    ></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link"
+                                        ><i class="fa-solid fa-heart fs-5"></i
+                                    ></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link"
+                                        ><i class="fa-solid fa-user fs-5"></i
+                                    ></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a
+                                        href="#"
+                                        class="nav-link position-relative"
+                                    >
+                                        <i
+                                            class="fa-solid fa-bag-shopping fs-5"
+                                        ></i>
+                                        <span
+                                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill"
+                                            >3</span
+                                        >
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category Navigation -->
+            <nav class="category-nav d-none d-lg-block">
+                <div class="container">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link all-categories" href="#"
+                                ><i class="fa-solid fa-bars me-2"></i> كل
+                                الأقسام</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">وصل حديثاً</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">مقاسات كبيرة</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">رجالي</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">نسائي</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">أطفال</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">الصحة والجمال</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">اكسسورات</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">الحقائب والأمتعة</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"> المطبخ</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <!-- ======================= BODY CONTENT (Placeholder) ======================= -->
+        <main class="category-page py-5">
+            <div class="container">
+                <!-- ======================= BREADCRUMB & HEADER ======================= -->
+                <div class="page-header mb-4">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="index.html">الرئيسية</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="#">الأقسام</a>
+                            </li>
+                            <li
+                                class="breadcrumb-item active"
+                                aria-current="page"
+                            >
+                                ملابس
+                            </li>
+                        </ol>
+                    </nav>
+                    <h1 class="category-title">قسم الملابس</h1>
+                    <p class="category-description">
+                        اكتشف أحدث تشكيلاتنا من الملابس العصرية لجميع الأذواق.
+                        جودة عالية بأسعار لا تقاوم.
+                    </p>
+                </div>
+
+                <!-- ======================= CATEGORY PROMOTIONS SLIDER ======================= -->
+                <div class="swiper category-promo-slider mb-5">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div
+                                class="category-promo-banner"
+                                style="
+                                    background-image: url('categories/cat1.jpg');
+                                "
+                            >
+                                <h3>وصل حديثاً!</h3>
+                                <p>تخفيضات تصل إلى 30%</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div
+                                class="category-promo-banner"
+                                style="
+                                    background-image: url('categories/cat2.jpg');
+                                "
+                            >
+                                <h3>عرض الصيف الخاطف</h3>
+                                <p>اشتري قطعة واحصل على الثانية مجاناً</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div
+                                class="category-promo-banner"
+                                style="
+                                    background-image: url('categories/cat3.jpg');
+                                "
+                            >
+                                <h3>أناقة الرجل العصري</h3>
+                                <p>أفضل الماركات العالمية</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+
+                <div class="row g-4">
+                    <!-- ======================= FILTER SIDEBAR ======================= -->
+                    <aside class="col-lg-3">
+                        <div class="filter-sidebar">
+                            <!-- Search Widget -->
+                            <div class="filter-widget">
+                                <h5 class="widget-title">ابحث هنا</h5>
+                                <div class="input-group">
+                                    <input
+                                        type="search"
+                                        class="form-control"
+                                        placeholder="ابحث في القسم..."
+                                    />
+                                    <button
+                                        class="btn btn-outline-secondary"
+                                        type="button"
+                                    >
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- Categories Widget -->
+                            <div class="filter-widget">
+                                <h5 class="widget-title">الفئات الفرعية</h5>
+                                <ul class="list-unstyled category-filter-list">
+                                    <li>
+                                        <a href="#" class="active"
+                                            >الكل
+                                            <span class="count">(80)</span></a
+                                        >
+                                    </li>
+                                    <li>
+                                        <a href="#"
+                                            >قمصان
+                                            <span class="count">(25)</span></a
+                                        >
+                                    </li>
+                                    <li>
+                                        <a href="#"
+                                            >بناطيل
+                                            <span class="count">(30)</span></a
+                                        >
+                                    </li>
+                                    <li>
+                                        <a href="#"
+                                            >ملابس رياضية
+                                            <span class="count">(15)</span></a
+                                        >
+                                    </li>
+                                    <li>
+                                        <a href="#"
+                                            >ملابس خارجية
+                                            <span class="count">(10)</span></a
+                                        >
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Price Filter Widget -->
+                            <div class="filter-widget">
+                                <h5 class="widget-title">السعر</h5>
+                                <div
+                                    class="price-inputs d-flex align-items-center gap-2"
+                                >
+                                    <input
+                                        type="number"
+                                        class="form-control"
+                                        placeholder="من"
+                                    />
+                                    <span>-</span>
+                                    <input
+                                        type="number"
+                                        class="form-control"
+                                        placeholder="إلى"
+                                    />
+                                </div>
+                            </div>
+
+                            <!-- Sizes Filter Widget -->
+                            <div class="filter-widget">
+                                <h5 class="widget-title">المقاس</h5>
+                                <div class="size-selector">
+                                    <button>S</button>
+                                    <button class="active">M</button>
+                                    <button>L</button>
+                                    <button>XL</button>
+                                    <button>XXL</button>
+                                </div>
+                            </div>
+
+                            <!-- Color Filter Widget -->
+                            <div class="filter-widget">
+                                <h5 class="widget-title">اللون</h5>
+                                <div class="color-selector">
+                                    <span
+                                        class="color-swatch"
+                                        style="background-color: #000"
+                                        title="أسود"
+                                    ></span>
+                                    <span
+                                        class="color-swatch active"
+                                        style="
+                                            background-color: #fff;
+                                            border: 1px solid #ddd;
+                                        "
+                                        title="أبيض"
+                                    ></span>
+                                    <span
+                                        class="color-swatch"
+                                        style="background-color: #3498db"
+                                        title="أزرق"
+                                    ></span>
+                                    <span
+                                        class="color-swatch"
+                                        style="background-color: #e74c3c"
+                                        title="أحمر"
+                                    ></span>
+                                    <span
+                                        class="color-swatch"
+                                        style="background-color: #95a5a6"
+                                        title="رمادي"
+                                    ></span>
+                                </div>
+                            </div>
+
+                            <!-- Filter Actions -->
+                            <div class="filter-widget pt-3">
+                                <button class="btn btn-style w-100">
+                                    تطبيق الفلاتر
+                                </button>
+                                <a
+                                    href="#"
+                                    class="d-block text-center text-muted mt-2"
+                                    >مسح الكل</a
+                                >
+                            </div>
+                        </div>
+                    </aside>
+
+                    <!-- ======================= PRODUCTS GRID ======================= -->
+                    <div class="col-lg-9">
+                        <div class="products-area">
+                            <!-- Sorting Controls -->
+                            <div
+                                class="d-flex justify-content-between align-items-center mb-4 p-3 bg-light rounded"
+                            >
+                                <p class="mb-0 text-muted">
+                                    يتم عرض 12 من 80 منتج
+                                </p>
+                                <div class="d-flex align-items-center gap-2">
+                                    <label
+                                        for="sort-options"
+                                        class="form-label mb-0"
+                                        >ترتيب حسب:</label
+                                    >
+                                    <select
+                                        class="form-select form-select-sm"
+                                        id="sort-options"
+                                    >
+                                        <option selected>الأحدث</option>
+                                        <option value="1">
+                                            السعر: من الأقل للأعلى
+                                        </option>
+                                        <option value="2">
+                                            السعر: من الأعلى للأقل
+                                        </option>
+                                        <option value="3">
+                                            الأعلى تقييماً
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Products Grid -->
+                            <div class="row g-4">
+                                <!-- Repeat product-card from homepage -->
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="product-card">
+                                        <div class="product-image">
+                                            <span class="discount-badge"
+                                                >20%</span
+                                            >
+                                            <img
+                                                src="./product.png"
+                                                alt="Product Name"
+                                            />
+                                            <button class="wishlist-btn">
+                                                <i
+                                                    class="fa-solid fa-heart"
+                                                ></i>
+                                            </button>
+                                        </div>
+                                        <div class="product-info">
+                                            <div class="star-rating">
+                                                <i class="fa-solid fa-star"></i
+                                                ><i class="fa-solid fa-star"></i
+                                                ><i class="fa-solid fa-star"></i
+                                                ><i class="fa-solid fa-star"></i
+                                                ><i
+                                                    class="fa-regular fa-star"
+                                                ></i>
+                                            </div>
+                                            <h3 class="product-title">
+                                                قميص و رباط خصر بنطلون
+                                            </h3>
+                                            <p class="product-price">
+                                                40 ليرةسوري
+                                            </p>
+                                            <button class="btn btn-style w-100">
+                                                + أضف للسلة
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="product-card">
+                                        <div class="product-image">
+                                            <img
+                                                src="./product.png"
+                                                alt="Product Name"
+                                            /><button class="wishlist-btn">
+                                                <i
+                                                    class="fa-regular fa-heart"
+                                                ></i>
+                                            </button>
+                                        </div>
+                                        <div class="product-info">
+                                            <div class="star-rating">
+                                                <i class="fa-solid fa-star"></i
+                                                ><i class="fa-solid fa-star"></i
+                                                ><i class="fa-solid fa-star"></i
+                                                ><i
+                                                    class="fa-solid fa-star-half-stroke"
+                                                ></i
+                                                ><i
+                                                    class="fa-regular fa-star"
+                                                ></i>
+                                            </div>
+                                            <h3 class="product-title">
+                                                تيشيرت عصري للرجال
+                                            </h3>
+                                            <p class="product-price">
+                                                35 ليرةسوري
+                                            </p>
+                                            <button class="btn btn-style w-100">
+                                                + أضف للسلة
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="product-card">
+                                        <div class="product-image">
+                                            <img
+                                                src="./product.png"
+                                                alt="Product Name"
+                                            /><button
+                                                class="wishlist-btn active"
+                                            >
+                                                <i
+                                                    class="fa-solid fa-heart"
+                                                ></i>
+                                            </button>
+                                        </div>
+                                        <div class="product-info">
+                                            <div class="star-rating">
+                                                <i class="fa-solid fa-star"></i
+                                                ><i class="fa-solid fa-star"></i
+                                                ><i class="fa-solid fa-star"></i
+                                                ><i class="fa-solid fa-star"></i
+                                                ><i
+                                                    class="fa-solid fa-star"
+                                                ></i>
+                                            </div>
+                                            <h3 class="product-title">
+                                                بنطال جينز سكيني
+                                            </h3>
+                                            <p class="product-price">
+                                                55 ليرةسوري
+                                            </p>
+                                            <button class="btn btn-style w-100">
+                                                + أضف للسلة
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- ... Add more product cards ... -->
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="product-card">
+                                        <div class="product-image">
+                                            <img
+                                                src="./product.png"
+                                                alt="Product Name"
+                                            /><button class="wishlist-btn">
+                                                <i
+                                                    class="fa-regular fa-heart"
+                                                ></i>
+                                            </button>
+                                        </div>
+                                        <div class="product-info">
+                                            <div class="star-rating">
+                                                <i class="fa-solid fa-star"></i
+                                                ><i class="fa-solid fa-star"></i
+                                                ><i class="fa-solid fa-star"></i
+                                                ><i
+                                                    class="fa-regular fa-star"
+                                                ></i
+                                                ><i
+                                                    class="fa-regular fa-star"
+                                                ></i>
+                                            </div>
+                                            <h3 class="product-title">
+                                                هودي رياضي
+                                            </h3>
+                                            <p class="product-price">
+                                                60 ليرةسوري
+                                            </p>
+                                            <button class="btn btn-style w-100">
+                                                + أضف للسلة
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="product-card">
+                                        <div class="product-image">
+                                            <span class="discount-badge"
+                                                >15%</span
+                                            ><img
+                                                src="./product.png"
+                                                alt="Product Name"
+                                            /><button class="wishlist-btn">
+                                                <i
+                                                    class="fa-regular fa-heart"
+                                                ></i>
+                                            </button>
+                                        </div>
+                                        <div class="product-info">
+                                            <div class="star-rating">
+                                                <i class="fa-solid fa-star"></i
+                                                ><i class="fa-solid fa-star"></i
+                                                ><i class="fa-solid fa-star"></i
+                                                ><i class="fa-solid fa-star"></i
+                                                ><i
+                                                    class="fa-regular fa-star"
+                                                ></i>
+                                            </div>
+                                            <h3 class="product-title">
+                                                جاكيت رسمي
+                                            </h3>
+                                            <p class="product-price">
+                                                70 ليرةسوري
+                                            </p>
+                                            <button class="btn btn-style w-100">
+                                                + أضف للسلة
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="product-card">
+                                        <div class="product-image">
+                                            <img
+                                                src="./product.png"
+                                                alt="Product Name"
+                                            /><button class="wishlist-btn">
+                                                <i
+                                                    class="fa-regular fa-heart"
+                                                ></i>
+                                            </button>
+                                        </div>
+                                        <div class="product-info">
+                                            <div class="star-rating">
+                                                <i class="fa-solid fa-star"></i
+                                                ><i class="fa-solid fa-star"></i
+                                                ><i class="fa-solid fa-star"></i
+                                                ><i class="fa-solid fa-star"></i
+                                                ><i
+                                                    class="fa-regular fa-star"
+                                                ></i>
+                                            </div>
+                                            <h3 class="product-title">
+                                                قميص بولو
+                                            </h3>
+                                            <p class="product-price">
+                                                42 ليرةسوري
+                                            </p>
+                                            <button class="btn btn-style w-100">
+                                                + أضف للسلة
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pagination -->
+                            <nav
+                                aria-label="Page navigation"
+                                class="mt-5 d-flex justify-content-center"
+                            >
+                                <ul class="pagination">
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#">السابق</a>
+                                    </li>
+                                    <li
+                                        class="page-item active"
+                                        aria-current="page"
+                                    >
+                                        <a class="page-link" href="#">1</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">2</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">3</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">التالي</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- ======================= FOOTER ======================= -->
+        <footer>
+            <div class="pre-footer-section">
+                <div class="container">
+                    <div class="pre-footer-card">
+                        <div class="row g-0 align-items-center">
+                            <div
+                                class="col-lg-1 d-none d-lg-flex flex-column align-items-center justify-content-center pre-footer-social gap-4"
+                            >
+                                <a href="#"
+                                    ><i class="fab fa-facebook-f"></i
+                                ></a>
+                                <a href="#"><i class="fab fa-x"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                            <div class="col-lg-8 px-4 py-5 p-md-5">
+                                <h2 class="fw-bold">
+                                    كن على تواصل! واحصل على
+                                    <span> خصم %20</span>
+                                </h2>
+                                <p class="text-muted mt-3">
+                                    لتبقى على اتصال، شارك في قائمتنا البريدية
+                                    وكن على اطلاع على أحدث عروضنا.
+                                </p>
+                                <form class="mt-4">
+                                    <div class="input-group">
+                                        <input
+                                            type="email"
+                                            class="form-control form-control-lg"
+                                            placeholder="أدخل بريدك الإلكتروني"
+                                            aria-label="Recipient's username"
+                                            aria-describedby="button-addon2"
+                                        />
+                                        <button
+                                            class="btn btn-subscribe"
+                                            type="button"
+                                            id="button-addon2"
+                                        >
+                                            اشترك
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-footer">
+                <div class="container">
+                    <div class="row gy-4 align-items-center">
+                        <div class="col-lg-2 col-6">
+                            <img
+                                src="logo.png"
+                                alt="Stylee Logo"
+                                height="100"
+                                class="mb-3"
+                            />
+                        </div>
+                        <div class="col-lg-2 col-6">
+                            <h5 class="footer-title">روابط سريعة</h5>
+                            <ul class="list-unstyled footer-links">
+                                <li class="mb-2"><a href="#">الرئيسية</a></li>
+                                <li class="mb-2">
+                                    <a href="#">كل المنتجات</a>
+                                </li>
+                                <li class="mb-2"><a href="#">كل المتاجر</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2 col-6">
+                            <h5 class="footer-title">الدعم</h5>
+                            <ul class="list-unstyled footer-links">
+                                <li class="mb-2">
+                                    <a href="#">سياسة الخصوصية</a>
+                                </li>
+                                <li class="mb-2">
+                                    <a href="#">سياسة الاسترجاع</a>
+                                </li>
+                                <li class="mb-2">
+                                    <a href="#">الشروط و الأحكام</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-3 col-6">
+                            <h5 class="footer-title">تواصل معنا</h5>
+                            <ul class="list-unstyled footer-links">
+                                <li class="mb-2">
+                                    <a href="mailto:styleeonline@email.com"
+                                        ><i
+                                            class="fa-solid fa-envelope me-2"
+                                        ></i>
+                                        styleeonline@email.com</a
+                                    >
+                                </li>
+                                <li class="mb-5">
+                                    <a href="tel:+123456789"
+                                        ><i class="fa-solid fa-phone me-2"></i>
+                                        +123456789</a
+                                    >
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2 col-6">
+                            <img
+                                src="footer.png"
+                                alt="Happy Kids"
+                                class="girls-img d-none d-lg-block"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sub-footer text-center">
+                <span
+                    >جميع الحقوق محفوظة لـ
+                    <a href="#" class="text-white"
+                        >www.styleeonline.com</a
+                    ></span
+                >
+            </div>
+        </footer>
+        <!-- Bootstrap 5.3.2 JS Bundle -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"
+        ></script>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // --- Existing Swiper Initializations from Homepage ---
+                const heroSwiper = new Swiper(".hero-slider", {
+                    /* ... */
+                });
+                const productSwiper = new Swiper(".product-slider", {
+                    /* ... */
+                });
+
+                // --- NEW: Category Promotions Slider ---
+                const categoryPromoSwiper = new Swiper(
+                    ".category-promo-slider",
+                    {
+                        loop: true,
+                        slidesPerView: 1,
+                        spaceBetween: 20,
+                        autoplay: {
+                            delay: 3500,
+                            disableOnInteraction: false,
+                        },
+                        pagination: {
+                            el: ".swiper-pagination",
+                            clickable: true,
+                        },
+                        breakpoints: {
+                            768: {
+                                slidesPerView: 2,
+                            },
+                            992: {
+                                slidesPerView: 3,
+                            },
+                        },
+                    }
+                );
+            });
+        </script>
+    </body>
+</html>

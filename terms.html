@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Stylee Online - الرئيسية</title>
+
+        <!-- Google Fonts (Tajawal) -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Bootstrap 5.3.2 CSS (RTL) -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css"
+            integrity="sha384-nU14brUcp6StFntEOOEBvcJm4huWjB0OcIeQ3fltAfSmuZFrkAif0T+UtNGlKKQv"
+            crossorigin="anonymous"
+        />
+
+        <!-- Font Awesome 6.4.2 CSS -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+            integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+
+        <link rel="stylesheet" href="main.css" />
+        <style>
+            /* --- Legal Pages (Privacy & Terms) --- */
+
+            .legal-page-container {
+                background-color: var(--white, #fff);
+                border: 1px solid #e9ecef;
+                border-radius: 12px;
+                margin-top: 30px;
+            }
+
+            .legal-content {
+                padding: 1.5rem;
+            }
+
+            .legal-content .page-title {
+                font-weight: 700;
+                color: #333;
+            }
+            .legal-content .last-updated {
+                color: #6c757d;
+                font-size: 0.9rem;
+                margin-bottom: 2rem;
+                border-bottom: 1px solid #e9ecef;
+                padding-bottom: 1rem;
+            }
+
+            .legal-content .section-title {
+                font-weight: 600;
+                color: var(--dark-purple, #86326a);
+                margin-top: 2rem;
+                margin-bottom: 1rem;
+                padding-bottom: 0.5rem;
+                border-bottom: 1px solid #f1f1f1;
+            }
+
+            .legal-content p {
+                line-height: 1.8;
+                color: #555;
+            }
+
+            .legal-content ul {
+                padding-right: 20px; /* Adjust padding for RTL */
+            }
+
+            .legal-content ul li {
+                margin-bottom: 0.75rem;
+                line-height: 1.8;
+                color: #555;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- ======================= HEADER ======================= -->
+        <header>
+            <!-- Top Bar -->
+            <div class="top-bar d-none d-md-block">
+                <div
+                    class="container d-flex justify-content-center align-items-center gap-4"
+                >
+                    <span
+                        >خصم %21 على أول طلب لك باستخدام كود
+                        <span class="fw-bold">NEW</span> -
+                        <a href="#">اشترِ خصمك الآن</a></span
+                    >
+                    <button class="btn btn-sm btn-go">اذهب</button>
+                </div>
+            </div>
+            <!-- Main Header & Search -->
+            <div class="main-header py-2">
+                <div class="container">
+                    <!-- Top Row in Header -->
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <ul
+                                class="nav header-actions justify-content-center justify-content-lg-start"
+                            >
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link"
+                                        ><i
+                                            class="fa-solid fa-location-dot"
+                                        ></i>
+                                        أين ألإدارايات</a
+                                    >
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link"
+                                        ><i class="fa-solid fa-store"></i> إبدأ
+                                        البيع معنا</a
+                                    >
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6 d-none d-lg-block">
+                            <ul class="nav header-actions">
+                                <li class="nav-item dropdown lang-container">
+                                    <a
+                                        class="nav-link dropdown-toggle lang"
+                                        href="#"
+                                        role="button"
+                                        data-bs-toggle="dropdown"
+                                        aria-expanded="false"
+                                    >
+                                        <i class="fa-solid fa-globe"></i> Eng
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a class="dropdown-item" href="#"
+                                                >العربية</a
+                                            >
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#"
+                                                >English</a
+                                            >
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Bottom Row in Header -->
+                    <div class="row align-items-center mt-2">
+                        <div class="col-md-3 col-2">
+                            <a href="#" class="header-logo">
+                                <img
+                                    src="logo.png"
+                                    alt="Stylee Logo"
+                                    height="40"
+                                />
+                            </a>
+                        </div>
+                        <div class="col-lg-6 col-md-8 col-10">
+                            <div class="search-bar-wrapper position-relative">
+                                <form class="d-flex search-bar">
+                                    <input
+                                        class="form-control"
+                                        type="search"
+                                        placeholder="ابحث..."
+                                        aria-label="Search"
+                                    />
+                                    <button
+                                        class="btn btn-search d-flex align-items-center justify-content-center"
+                                        type="submit"
+                                    >
+                                        <i
+                                            class="fa-solid fa-magnifying-glass"
+                                        ></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-4">
+                            <ul
+                                class="nav user-actions justify-content-center mt-4 justify-content-lg-end"
+                            >
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link"
+                                        ><i class="fa-solid fa-rotate fs-5"></i
+                                    ></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link"
+                                        ><i class="fa-solid fa-heart fs-5"></i
+                                    ></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link"
+                                        ><i class="fa-solid fa-user fs-5"></i
+                                    ></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a
+                                        href="#"
+                                        class="nav-link position-relative"
+                                    >
+                                        <i
+                                            class="fa-solid fa-bag-shopping fs-5"
+                                        ></i>
+                                        <span
+                                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill"
+                                            >3</span
+                                        >
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category Navigation -->
+            <nav class="category-nav d-none d-lg-block">
+                <div class="container">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link all-categories" href="#"
+                                ><i class="fa-solid fa-bars me-2"></i> كل
+                                الأقسام</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">وصل حديثاً</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">مقاسات كبيرة</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">رجالي</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">نسائي</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">أطفال</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">الصحة والجمال</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">اكسسورات</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">الحقائب والأمتعة</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"> المطبخ</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <!-- ======================= BODY CONTENT (Placeholder) ======================= -->
+        <main class="legal-page-container container py-4 py-lg-5">
+            <div class="legal-content">
+                <h1 class="page-title">شروط وأحكام الاستخدام</h1>
+                <p class="last-updated">آخر تحديث: 24 أكتوبر 2023</p>
+
+                <p>
+                    مرحبًا بك في "Stylee Online". باستخدام هذا الموقع، فإنك
+                    توافق على الامتثال لهذه الشروط والأحكام والالتزام بها. إذا
+                    كنت لا توافق على هذه الشروط، يرجى عدم استخدام موقعنا.
+                </p>
+
+                <h3 class="section-title">1. استخدام الموقع</h3>
+                <ul>
+                    <li>
+                        يجب أن تكون في السن القانوني لإبرام العقود في بلدك
+                        لاستخدام هذا الموقع.
+                    </li>
+                    <li>
+                        أنت مسؤول عن الحفاظ على سرية معلومات حسابك وكلمة المرور
+                        الخاصة بك.
+                    </li>
+                    <li>
+                        توافق على عدم استخدام الموقع لأي غرض غير قانوني أو محظور
+                        بموجب هذه الشروط.
+                    </li>
+                </ul>
+
+                <h3 class="section-title">2. الملكية الفكرية</h3>
+                <p>
+                    جميع المحتويات الموجودة على هذا الموقع، بما في ذلك النصوص
+                    والرسومات والشعارات والصور والبرامج، هي ملك لـ "Stylee
+                    Online" أو مزوديها ومحمية بموجب قوانين حقوق النشر الدولية.
+                    لا يجوز لك إعادة استخدام أو توزيع أي محتوى دون الحصول على
+                    إذن كتابي صريح منا.
+                </p>
+
+                <h3 class="section-title">3. المنتجات والأسعار</h3>
+                <ul>
+                    <li>
+                        نسعى جاهدين لعرض الألوان والأبعاد للمنتجات بأكبر قدر
+                        ممكن من الدقة، لكننا لا نضمن أن شاشتك ستعرض الألوان بشكل
+                        مطابق.
+                    </li>
+                    <li>
+                        جميع الأسعار قابلة للتغيير دون إشعار مسبق. السعر المطبق
+                        على طلبك هو السعر الذي كان ساريًا وقت تقديم الطلب.
+                    </li>
+                    <li>
+                        نحتفظ بالحق في رفض أو إلغاء أي طلب لأي سبب، بما في ذلك
+                        الأخطاء في التسعير أو وصف المنتج.
+                    </li>
+                </ul>
+
+                <h3 class="section-title">4. حساب المستخدم</h3>
+                <p>
+                    أنت توافق على تقديم معلومات دقيقة وحديثة عند إنشاء حسابك.
+                    نحتفظ بالحق في إنهاء حسابك أو تقييد وصولك إلى خدماتنا إذا
+                    تبين أنك قدمت معلومات غير دقيقة أو انتهكت هذه الشروط.
+                </p>
+
+                <h3 class="section-title">5. تحديد المسؤولية</h3>
+                <p>
+                    إلى أقصى حد يسمح به القانون، لن تكون "Stylee Online" مسؤولة
+                    عن أي أضرار غير مباشرة أو عرضية أو خاصة تنشأ عن استخدامك
+                    للموقع أو عدم قدرتك على استخدامه. مسؤوليتنا الإجمالية تجاهك
+                    لأي مطالبة تنشأ عن هذه الشروط لن تتجاوز المبلغ الذي دفعته
+                    لنا مقابل المنتجات المعنية.
+                </p>
+
+                <h3 class="section-title">6. القانون الحاكم</h3>
+                <p>
+                    تخضع هذه الشروط وتُفسر وفقًا لقوانين [اذكر بلدك هنا]، وأنت
+                    توافق بشكل نهائي على الاختصاص القضائي لمحاكم [اذكر مدينتك
+                    هنا].
+                </p>
+
+                <h3 class="section-title">7. التغييرات على الشروط</h3>
+                <p>
+                    نحتفظ بالحق في تعديل هذه الشروط في أي وقت. ستصبح أي تغييرات
+                    سارية المفعول فور نشرها على الموقع. استمرارك في استخدام
+                    الموقع بعد هذه التغييرات يشكل موافقتك عليها.
+                </p>
+            </div>
+        </main>
+
+        <!-- ======================= FOOTER ======================= -->
+        <footer>
+            <div class="pre-footer-section">
+                <div class="container">
+                    <div class="pre-footer-card">
+                        <div class="row g-0 align-items-center">
+                            <div
+                                class="col-lg-1 d-none d-lg-flex flex-column align-items-center justify-content-center pre-footer-social gap-4"
+                            >
+                                <a href="#"
+                                    ><i class="fab fa-facebook-f"></i
+                                ></a>
+                                <a href="#"><i class="fab fa-x"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                            <div class="col-lg-8 px-4 py-5 p-md-5">
+                                <h2 class="fw-bold">
+                                    كن على تواصل! واحصل على
+                                    <span> خصم %20</span>
+                                </h2>
+                                <p class="text-muted mt-3">
+                                    لتبقى على اتصال، شارك في قائمتنا البريدية
+                                    وكن على اطلاع على أحدث عروضنا.
+                                </p>
+                                <form class="mt-4">
+                                    <div class="input-group">
+                                        <input
+                                            type="email"
+                                            class="form-control form-control-lg"
+                                            placeholder="أدخل بريدك الإلكتروني"
+                                            aria-label="Recipient's username"
+                                            aria-describedby="button-addon2"
+                                        />
+                                        <button
+                                            class="btn btn-subscribe"
+                                            type="button"
+                                            id="button-addon2"
+                                        >
+                                            اشترك
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-footer">
+                <div class="container">
+                    <div class="row gy-4 align-items-center">
+                        <div class="col-lg-2 col-6">
+                            <img
+                                src="logo.png"
+                                alt="Stylee Logo"
+                                height="100"
+                                class="mb-3"
+                            />
+                        </div>
+                        <div class="col-lg-2 col-6">
+                            <h5 class="footer-title">روابط سريعة</h5>
+                            <ul class="list-unstyled footer-links">
+                                <li class="mb-2"><a href="#">الرئيسية</a></li>
+                                <li class="mb-2">
+                                    <a href="#">كل المنتجات</a>
+                                </li>
+                                <li class="mb-2"><a href="#">كل المتاجر</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2 col-6">
+                            <h5 class="footer-title">الدعم</h5>
+                            <ul class="list-unstyled footer-links">
+                                <li class="mb-2">
+                                    <a href="#">سياسة الخصوصية</a>
+                                </li>
+                                <li class="mb-2">
+                                    <a href="#">سياسة الاسترجاع</a>
+                                </li>
+                                <li class="mb-2">
+                                    <a href="#">الشروط و الأحكام</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-3 col-6">
+                            <h5 class="footer-title">تواصل معنا</h5>
+                            <ul class="list-unstyled footer-links">
+                                <li class="mb-2">
+                                    <a href="mailto:styleeonline@email.com"
+                                        ><i
+                                            class="fa-solid fa-envelope me-2"
+                                        ></i>
+                                        styleeonline@email.com</a
+                                    >
+                                </li>
+                                <li class="mb-5">
+                                    <a href="tel:+123456789"
+                                        ><i class="fa-solid fa-phone me-2"></i>
+                                        +123456789</a
+                                    >
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2 col-6">
+                            <img
+                                src="footer.png"
+                                alt="Happy Kids"
+                                class="girls-img d-none d-lg-block"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sub-footer text-center">
+                <span
+                    >جميع الحقوق محفوظة لـ
+                    <a href="#" class="text-white"
+                        >www.styleeonline.com</a
+                    ></span
+                >
+            </div>
+        </footer>
+        <!-- Bootstrap 5.3.2 JS Bundle -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"
+        ></script>
+    </body>
+</html>

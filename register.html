@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>تسجيل الدخول - Stylee Online</title>
+
+        <!-- Google Fonts (Tajawal) -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Bootstrap 5.3.2 CSS (RTL) -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css"
+            integrity="sha384-nU14brUcp6StFntEOOEBvcJm4huWjB0OcIeQ3fltAfSmuZFrkAif0T+UtNGlKKQv"
+            crossorigin="anonymous"
+        />
+
+        <!-- Font Awesome 6.4.2 CSS -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+            integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+
+        <style>
+            :root {
+                --primary-purple: #9c27b0;
+                --primary-pink: #e91e63;
+                --dark-purple: #6a1b9a;
+                --text-color: #f0f0f0;
+                --placeholder-color: #a0a0a0;
+                --dark-bg: #120e14;
+                --form-bg: rgba(45, 38, 52, 0.6);
+            }
+
+            body {
+                font-family: "Tajawal", sans-serif;
+                background-color: var(--dark-bg);
+                color: var(--text-color);
+                position: relative;
+                overflow: hidden; /* Hide overflow for circles */
+            }
+
+            /* Animated Background Circles */
+            .bg-circles {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 0;
+                overflow: hidden;
+            }
+
+            .circle {
+                position: absolute;
+                border-radius: 50%;
+                background: linear-gradient(
+                    135deg,
+                    var(--primary-purple),
+                    var(--primary-pink)
+                );
+                filter: blur(100px);
+                opacity: 0.5;
+                animation: move 25s infinite alternate;
+            }
+
+            .circle-1 {
+                width: 400px;
+                height: 400px;
+                top: -150px;
+                left: -150px;
+                animation-duration: 30s;
+            }
+            .circle-2 {
+                width: 500px;
+                height: 500px;
+                bottom: -200px;
+                right: -200px;
+                animation-duration: 35s;
+                animation-delay: -5s;
+            }
+
+            @keyframes move {
+                from {
+                    transform: translate(0, 0) scale(1);
+                }
+                to {
+                    transform: translate(150px, -100px) scale(1.3);
+                }
+            }
+
+            /* Main container to overlay the animation */
+            .main-container {
+                position: relative;
+                z-index: 1;
+            }
+
+            /* Logo Styling */
+            .logo-img {
+                max-width: 60%;
+                height: auto;
+            }
+
+            /* Form Container Styling */
+            .login-form-container {
+                background: var(--form-bg);
+                padding: 2.5rem;
+                border-radius: 20px;
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            /* Bootstrap Form Overrides */
+            .form-control {
+                background-color: rgba(0, 0, 0, 0.2);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                color: var(--text-color);
+                padding: 0.9rem 1rem;
+            }
+
+            .form-control::placeholder {
+                color: var(--placeholder-color);
+            }
+
+            .form-control:focus {
+                background-color: rgba(0, 0, 0, 0.3);
+                border-color: var(--primary-purple);
+                box-shadow: 0 0 0 0.25rem rgba(156, 39, 176, 0.25);
+                color: white;
+            }
+
+            /* Input group icon for password */
+            .input-group-text {
+                background-color: rgba(0, 0, 0, 0.2);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                border-right: 0; /* Adjusted for RTL */
+                color: var(--placeholder-color);
+                cursor: pointer;
+            }
+
+            .form-control:focus + .input-group-text {
+                border-color: var(--primary-purple);
+            }
+
+            .form-check-input {
+                background-color: transparent;
+                border-color: var(--placeholder-color);
+            }
+
+            .form-check-input:checked {
+                background-color: var(--primary-pink);
+                border-color: var(--primary-pink);
+            }
+
+            .form-check-input:focus {
+                box-shadow: 0 0 0 0.25rem rgba(233, 30, 99, 0.25);
+            }
+
+            /* Custom Button */
+            .btn-purple {
+                background-color: var(--dark-purple);
+                border-color: var(--dark-purple);
+                color: white;
+                padding: 0.75rem;
+                font-weight: 700;
+                transition: 0.3s ease-in-out;
+            }
+
+            .btn-purple:hover {
+                background-color: var(--primary-pink);
+                border-color: var(--primary-pink);
+                color: white;
+            }
+
+            /* Links and Divider */
+            a {
+                color: var(--placeholder-color);
+                text-decoration: none;
+                transition: color 0.3s;
+            }
+            a:hover {
+                color: white;
+                transition: 0.5s ease-in-out;
+            }
+
+            .signup-link a {
+                color: white;
+                font-weight: bold;
+            }
+
+            .divider {
+                color: var(--placeholder-color);
+            }
+
+            /* Social Icons */
+            .social-icons {
+                position: fixed;
+                right: 2rem;
+                top: 50%;
+                transform: translateY(-50%);
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+                z-index: 2;
+            }
+
+            .social-icons a {
+                color: white;
+                font-size: 1.25rem;
+            }
+            .social-icons a:hover {
+                color: var(--primary-pink);
+                transform: scale(1.2);
+            }
+
+            /* Hide social icons on small screens to avoid clutter */
+            @media (max-width: 992px) {
+                .social-icons {
+                    display: none;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Animated Background -->
+        <div class="bg-circles">
+            <div class="circle circle-1"></div>
+            <div class="circle circle-2"></div>
+        </div>
+
+        <!-- Social Icons -->
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+
+        <!-- Main Content with Bootstrap Grid -->
+        <div class="container main-container">
+            <div
+                class="row min-vh-100 align-items-center justify-content-center"
+            >
+                <!-- Form Column -->
+                <div class="col-lg-6 col-md-8 col-sm-10">
+                    <div class="login-form-container">
+                        <div class="text-center">
+                            <h1 class="mb-2 fw-bold">انشاء حساب</h1>
+                            <p
+                                class="mb-4"
+                                style="color: var(--placeholder-color)"
+                            >
+                                كم نحب ان تكون فرد من عائلتنا
+                            </p>
+                        </div>
+
+                        <form>
+                            <div class="mb-3">
+                                <label
+                                    for="username"
+                                    class="form-label visually-hidden"
+                                    >اسم المستخدم
+                                </label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="username"
+                                    placeholder="اسم المستخدم"
+                                    required
+                                />
+                            </div>
+                            <div class="mb-3">
+                                <label
+                                    for="phone"
+                                    class="form-label visually-hidden"
+                                    >رقم الهاتف</label
+                                >
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="phone"
+                                    placeholder="رقم الهاتف"
+                                    required
+                                />
+                            </div>
+
+                            <div class="mb-3 input-group">
+                                <label
+                                    for="password"
+                                    class="form-label visually-hidden"
+                                    >كلمة المرور</label
+                                >
+                                <input
+                                    type="password"
+                                    class="form-control"
+                                    id="password"
+                                    placeholder="كلمة المرور"
+                                    required
+                                />
+                                <span
+                                    class="input-group-text"
+                                    id="togglePassword"
+                                >
+                                    <i class="fa-solid fa-eye-slash"></i>
+                                </span>
+                            </div>
+
+                            <div class="d-grid mb-3">
+                                <button type="submit" class="btn btn-purple">
+                                    انشاء حساب
+                                </button>
+                            </div>
+
+                            <div class="d-flex align-items-center my-4">
+                                <hr class="flex-grow-1" />
+                                <span class="mx-3 divider">أو</span>
+                                <hr class="flex-grow-1" />
+                            </div>
+
+                            <p class="text-center signup-link mb-4">
+                                لديك حساب؟ <a href="#">تسجيل الدخول</a>
+                            </p>
+
+                            <div class="d-flex justify-content-center gap-4">
+                                <a href="#">شروط الاستخدام</a>
+                                <a href="#">سياسة الخصوصية</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- Logo Column (visible on large screens) -->
+                <div
+                    class="col-lg-6 d-none d-lg-flex justify-content-center align-items-center"
+                >
+                    <img
+                        src="logo.png"
+                        alt="Stylee Online Logo"
+                        class="logo-img"
+                    />
+                </div>
+            </div>
+        </div>
+
+        <!-- Bootstrap 5.3.2 JS Bundle -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"
+        ></script>
+
+        <!-- Custom JS for password toggle -->
+        <script>
+            const togglePassword = document.querySelector("#togglePassword");
+            const passwordInput = document.querySelector("#password");
+            const icon = togglePassword.querySelector("i");
+
+            togglePassword.addEventListener("click", function () {
+                // Toggle the type attribute
+                const type =
+                    passwordInput.getAttribute("type") === "password"
+                        ? "text"
+                        : "password";
+                passwordInput.setAttribute("type", type);
+
+                // Toggle the icon class
+                icon.classList.toggle("fa-eye-slash");
+                icon.classList.toggle("fa-eye");
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,162 @@
+/* --- صفحة البروفايل Profile Page --- */
+
+/* متغيرات الألوان (إذا لم تكن معرفة عالمياً) */
+:root {
+    --dark-purple: #86326a;
+    --primary-purple: #a63f82;
+    --light-bg: #f8f9fa;
+    --white: #fff;
+    --border-color: #dee2e6;
+}
+
+/* Breadcrumb Styling */
+.breadcrumb a {
+    color: #6c757d;
+    text-decoration: none;
+}
+.breadcrumb-item.active {
+    color: var(--dark-purple);
+    font-weight: bold;
+}
+
+/* Sidebar Styling */
+.profile-sidebar {
+    background-color: var(--white);
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
+    height: 100%;
+}
+.profile-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    object-fit: cover;
+    background-color: #e9ecef; /* Placeholder color */
+    border: 2px solid #e9ecef;
+}
+
+.profile-nav a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.9rem 1rem;
+    color: #343a40;
+    text-decoration: none;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+    transition: background-color 0.2s, color 0.2s;
+}
+.profile-sidebar h5.fw-bold {
+    text-align: center;
+    color: #86326a;
+}
+.profile-nav a.active,
+.profile-nav a:hover {
+    background-color: var(--dark-purple);
+    color: var(--white);
+}
+
+/* Account Form Styling */
+.account-details-form {
+    background-color: var(--white);
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
+}
+
+.account-details-form .form-title {
+    color: var(--primary-purple);
+    font-weight: bold;
+}
+
+.account-details-form .form-label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #495057;
+}
+
+.account-details-form .form-control {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+.account-details-form .form-control:focus {
+    border-color: var(--primary-purple);
+    box-shadow: 0 0 0 0.25rem rgba(166, 63, 130, 0.25);
+}
+
+.account-details-form .form-control:disabled {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+}
+
+.btn-save {
+    background-color: var(--dark-purple);
+    color: var(--white);
+    padding: 0.7rem 2rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+.btn-save:hover {
+    background-color: #61254d;
+}
+/* Styling for Tab Panes */
+.tab-pane {
+    display: none;
+}
+.tab-pane.active {
+    display: block;
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.content-box {
+    background-color: var(--white);
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
+}
+
+/* My Orders Table */
+.table thead {
+    background-color: #f8f9fa;
+}
+
+/* My Addresses Card */
+.address-card {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    height: 100%;
+}
+.address-card .card-actions a {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Affiliate Marketing */
+.stat-card {
+    background-color: #f8f9fa;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+.stat-card h5 {
+    color: #6c757d;
+}
+.stat-card p {
+    color: var(--dark-purple);
+}
+
+/* General Link Hover Effect for active links */
+.profile-nav a {
+    transition: all 0.2s ease-in-out;
+}

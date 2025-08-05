@@ -1,0 +1,371 @@
+/* ======================= GLOBAL & VARIABLES ======================= */
+:root {
+    --primary-color: #882266;
+    --dark-color: #1a1a1a;
+    --light-gray: #f8f9fa;
+    --text-color: #333;
+    --font-family: "Tajawal", sans-serif;
+}
+
+body {
+    font-family: var(--font-family);
+    color: white;
+}
+
+/* Custom Button Style */
+.btn-style {
+    background-color: var(--primary-color);
+    color: white;
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 0.5rem 1.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+.btn-style:hover,
+.btn-style:focus {
+    background-color: #6d1b51;
+    color: white;
+    border-color: #6d1b51;
+}
+
+/* ======================= HERO SECTION ======================= */
+.hero-slide-item {
+    position: relative;
+    height: 515px;
+    border-radius: 15px;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    padding: 2rem;
+}
+
+.hero-slide-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.7) 0%,
+        rgba(0, 0, 0, 0) 50%
+    );
+}
+
+.hero-slide-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+}
+.hero-slide-content h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+.hero-slider .swiper-pagination-bullet {
+    background: rgba(255, 255, 255, 0.7);
+    width: 12px;
+    height: 12px;
+}
+.hero-slider .swiper-pagination-bullet-active {
+    background: var(--primary-color);
+}
+.side-banner {
+    position: relative;
+    flex-grow: 1;
+    border-radius: 15px;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    padding: 1.5rem;
+    display: flex;
+    align-items: flex-end;
+    color: white;
+}
+.side-banner-content h2,
+.side-banner-content h3 {
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+.side-banner .side-banner-content {
+    width: 100%;
+}
+.discount-tag {
+    position: absolute;
+    top: -83px;
+    left: -83px;
+    width: 150px;
+    height: 150px;
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 700;
+    font-size: 1.5rem;
+    transform: rotate(-45deg);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* ======================= SECTIONS STYLING ======================= */
+.section-container {
+    background-color: white;
+    color: var(--text-color);
+    border-radius: 15px;
+    padding: 2rem;
+}
+.product-slider-section {
+    background-color: white;
+}
+.product-slider-section .section-container {
+    padding: 0; /* remove padding to make slider full-width inside */
+}
+
+.section-title {
+    color: var(--primary-color);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+/* ======================= CATEGORIES SECTION ======================= */
+.category-item {
+    text-align: center;
+}
+.category-item a {
+    text-decoration: none;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+.category-item a:hover {
+    color: var(--primary-color);
+}
+.icon-circle {
+    width: 80px;
+    height: 80px;
+    background-color: #f2e4ec;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0.5rem;
+    transition: background-color 0.3s ease;
+}
+.icon-circle i {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+.category-item a:hover .icon-circle {
+    background-color: var(--primary-color);
+}
+.category-item a:hover .icon-circle i {
+    color: white;
+}
+.category-item p {
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+/* ======================= PRODUCT CARD ======================= */
+.product-card {
+    border: 1px solid #eee;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: white;
+    text-align: center;
+    transition: box-shadow 0.3s ease;
+}
+.product-card:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+.product-image {
+    position: relative;
+}
+.product-image img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 6 / 7;
+    object-fit: cover;
+}
+.wishlist-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    color: var(--text-color);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.wishlist-btn:hover {
+    background-color: white;
+    transform: scale(1.1);
+}
+.wishlist-btn.active {
+    color: #e74c3c;
+}
+.discount-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+.product-info {
+    padding: 1rem;
+}
+.star-rating {
+    color: #f39c12;
+    margin-bottom: 0.5rem;
+}
+.star-rating .fa-regular {
+    color: #ccc;
+}
+.product-title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+.product-price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+/* Product Slider */
+
+.product-slider .swiper-button-next,
+.product-slider .swiper-button-prev {
+    color: var(--primary-color);
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+.product-slider .swiper-button-next::after,
+.product-slider .swiper-button-prev::after {
+    font-size: 1rem;
+    font-weight: 700;
+}
+.product-slider .swiper-button-prev {
+    left: 0;
+}
+.product-slider .swiper-button-next {
+    left: 15px;
+}
+
+/* ======================= CTA BANNER ======================= */
+.cta-banner {
+    background-size: cover;
+    background-position: center;
+    min-height: 300px;
+    border-radius: 15px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 2rem;
+    overflow: hidden;
+}
+.cta-banner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(44, 15, 34, 0.7);
+    z-index: 1;
+}
+.cta-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+.cta-content h1 {
+    font-weight: 700;
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ======================= IMPORTANT OFFERS ======================= */
+.offers-list-box {
+    background-color: #2c2c2c;
+    border-radius: 15px;
+    padding: 1.5rem;
+}
+.offers-title {
+    color: var(--primary-color);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+.offers-list-box ul li a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #eee;
+    text-decoration: none;
+    padding: 0.75rem;
+    background-color: #3d3d3d;
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    transition: all 0.3s ease;
+}
+.offers-list-box ul li a:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateX(-5px);
+}
+
+/* ======================= NEW ARRIVALS FILTERS ======================= */
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+}
+.filter-btn {
+    background-color: transparent;
+    border: 1px solid #ddd;
+    color: var(--text-color);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.filter-btn:hover {
+    background-color: #f1f1f1;
+}
+.filter-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+@media (max-width: 991px) {
+    .filters {
+        width: 100%;
+        margin-top: 1rem;
+    }
+}
